@@ -1,0 +1,83 @@
+
+@import "../../shared/styles/theme.scss";
+@import "../-shared/styles/store-style.scss";
+
+.product-details-page{
+
+  .container-main {
+    .container-header {
+      .container-slideShow {
+        image {
+          width: 100%;
+          height: 100%;
+          stretch: fill;
+        }
+      }
+    }
+
+    .container-body {
+      background: $secondary-color;
+      .container-info-product {
+        padding: 10;       
+        border-bottom-width: 2;
+        border-bottom-color: #ddd;
+        border-bottom-style: groove;
+        background-color: rgba(255,255,255,0.5);        
+        .container-one {
+          margin-bottom: 10;
+        }
+        .title {
+          font-size: 18;
+          color: #444;              
+        }
+        .category {
+          font-size: 12.5;
+          color: coral;
+        }
+        .quantity {
+          font-size: 12;
+          color: #888;
+        }
+        .price {
+          color: goldenrod;
+          font-size: 16.5;
+          font-weight: 500;
+        }            
+        .btn {
+          height: 25;    
+          padding: 0;
+          margin: 0;                
+          border-radius: 5;
+          margin-bottom: 1;           
+          &.add-in-cart {
+            font-family: "LineAwesome"; 
+            font-size: 20;
+            color: #021042;                
+            width: 30;
+            margin-right: 6;
+            padding-top: -2;
+            border-radius: 100%;
+            background-color: #fff;
+            width: 25;
+            height: 25;
+          }
+          &.buy {                
+            color: #fff;
+            font-size: 14;
+            font-weight: 500;
+            background-color: goldenrod;                 
+            padding: 0 -10;
+            text-transform: capitalize;            
+          }
+        }            
+      }
+      .container-description {
+        padding: 15 10;
+        font-family: Arial, Helvetica, sans-serif;                                         
+        font-size: 14.5; 
+      }
+    }
+
+  }
+
+}

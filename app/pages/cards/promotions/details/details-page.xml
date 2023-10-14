@@ -1,0 +1,46 @@
+<Page class="page details-page" navigatingTo="onNavigatingTo" loaded="onLoaded">
+
+  <Page.actionBar>
+    <ActionBar>
+      <Label text="{{ internationalization.cards.PromotionDetailsPageTitle }}"/>
+    </ActionBar>
+  </Page.actionBar>
+
+  <ScrollView mainContent="true" class="container-main">
+    <StackLayout>
+
+      <StackLayout class="container-header">
+        <Image src="{{ data.thumbnail }}" layoutChanged="onThumbnailLayout" />
+        <Label text="{{ data.title }}"></Label>
+      </StackLayout>
+      
+      <DockLayout class="container-action" stretchLastChild="false" id="container-action">
+        <Label text="{{ internationalization.cards.neddedPointsLabel + data.points}}" dock="left"></Label>
+      </DockLayout>
+
+      <StackLayout class="container-body">
+          <HtmlView html="{{ data.promotionDescription }}" loaded="onPromotionDescriptionLoaded"/>                  
+      </StackLayout>
+      <StackLayout class="container-images">
+          <GridLayout columns="*,*,*" rows="*">                    
+              <StackLayout col="0" row="0" class="image-item" tap="onOpenImage" index="0">
+                  <Image src="{{ data.slideImages[0] }}" visibility="{{ data.slideImages[0] != null ? 'visible' : 'collapsed' }}" layoutChanged="setHeightImage" />
+              </StackLayout>
+              <StackLayout col="1" row="0" class="image-item" tap="onOpenImage" index="1">
+                  <Image src="{{ data.slideImages[1] }}" visibility="{{ data.slideImages[1] != null ? 'visible' : 'collapsed' }}" layoutChanged="setHeightImage" />
+              </StackLayout>                        
+              <StackLayout col="2" row="0" class="{{ data.hasMoreImages ? 'image-item last' : 'image-item' }}" tap="onOpenImage" index="2">
+                  <GridLayout columns="*" rows="*">                      
+                      <Image col="0" row="0" src="{{ data.slideImages[2] }}" visibility="{{ data.slideImages[2] != null ? 'visible' : 'collapsed' }}" layoutChanged="setHeightImage" />
+                      <DockLayout col="0" row="0" height="100%" visibility="{{ data.hasMoreImages ? 'visible' : 'collapsed' }}" class="overlay">     
+                          <Label text="{{ '+' + data.moreImages }}" />   
+                      </DockLayout>
+                  </GridLayout>                   
+              </StackLayout>                       
+          </GridLayout>
+      </StackLayout>   
+
+    </StackLayout>            
+  </ScrollView>
+  
+</Page>

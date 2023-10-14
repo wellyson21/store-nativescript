@@ -1,0 +1,8 @@
+
+<StackLayout class="container-search" backgroundColor="white">
+    <GridLayout rows="auto" columns="auto,*,auto" >
+        <Button row="0" col="0" id="searchButton" text="&#xf2eb;" tap="{{ onSearchSubmit }}" />
+        <TextField row="0" col="1" id="searchField" hint="Pesquise.." autocorrect="false" returnKeyType="search" returnPress="{{ onSearchSubmit }}" />
+        <Button row="0" id="searchClear" col="2" text="&#xf191;" visibility="hidden" tap="{{ onSearchClear }}" />
+    </GridLayout>
+</StackLayout>

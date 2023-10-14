@@ -1,0 +1,26 @@
+
+<Page class="browser-page" shownModally="onShownModally" >
+
+    <GridLayout rows="auto,*" columns="*" iosOverflowSafeArea="true">
+
+        <GridLayout rows="auto" columns="auto, *, auto" row="0" col="0" android:class="container-header-android" ios:class="container-header-ios" >
+            <Button row="0" col="0" text="&#xf342;" tap="onClose" class="header-button-close" />
+            <StackLayout row="0" col="1" left="0" class="header-title">
+                <Label text="{{ title }}" />
+            </StackLayout>
+            <StackLayout row="0" col="2" width="32" />
+        </GridLayout>
+
+        <StackLayout row="1" col="0">         
+           
+            <WebView id="webView" src="{{ url }}" height="100%" width="100%" loaded="onWebViewLoaded" visibility="{{ !isLoading ? 'visible' : 'collapsed' }}" /> 
+
+            <StackLayout width="100%" height="100%" visibility="{{ isLoading ? 'visible' : 'collapsed' }}" verticalAlignment="center">
+                <ActivityIndicator busy="true" class="loader" height="50pt" width="50pt" />
+            </StackLayout>
+
+        </StackLayout>
+
+    </GridLayout>   
+
+</Page>

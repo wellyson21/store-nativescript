@@ -1,0 +1,80 @@
+
+.order-list-page {
+
+  .main-container{
+
+    padding: 10pt;
+  }  
+}
+
+.order-item {
+  $borderRadius: 7;
+
+  border-radius: $borderRadius;
+  background-color: rgba(255,255,255,1);
+  border-width: 1px;
+  border-color: #dfdfdf;
+  border-bottom-width: 3;
+  border-bottom-style: groove;
+  height: 85pt;
+  margin-bottom: 5;
+
+  .btn {
+    height: 25;    
+    width: 25;
+    padding: 0;
+    font-size: 20pt;              
+    border-radius: 5;              
+    color: red;
+    margin-top: 18pt;
+    border-radius: 100%;
+    background-color: #fff;
+  }  
+
+  .product-item-info {
+    vertical-align: center;
+    margin-bottom: 15;          
+    padding-left: 6;
+    height: 100%; 
+    Label{
+      margin-left: 5pt;
+    }
+    .title {
+      font-size: 15.5;
+      color: #444;              
+    }
+    .date {
+      font-size: 10.5;
+      color: rgb(136, 136, 136);
+    }
+    .quantity {
+      font-size: 12;
+      color: #888;
+    }
+    .price {
+      color: goldenrod;
+      font-size: 16;
+      font-weight: 500;
+    }       
+    
+    .status{
+
+      color: rgb(134, 133, 132);
+      font-size: 10pt;
+      text-transform: capitalize;
+      font-weight: 500;
+    }
+             
+  }
+
+  .right-container{
+    height: 100%;
+    margin-bottom: 12;          
+
+    .date {
+      font-size: 10.5;
+      color: rgb(136, 136, 136);
+      margin-right: 10pt;
+    }
+  }
+}

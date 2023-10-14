@@ -1,0 +1,43 @@
+
+@import "../../styles/theme.scss";
+
+.browser-page {
+
+    .container-header-android {
+        padding: 30 10 8;
+    }
+
+    .container-header-ios {
+        padding: 5 10;
+    }
+
+    .container-header-android,
+    .container-header-ios {
+        background-color: $secondary-color;
+    }
+
+    .header-button-close {
+        font-family: 'LineAwesome'; 
+        font-size: 20;
+        width: 32; 
+        height: 32;
+        padding: 0; 
+        border-radius: 100%; 
+        background-color: transparent; 
+        color: #777;
+        background-color: lightgray;
+    }
+
+    .header-title {
+        vertical-align: center;       
+        height: 32;
+        width: 100%;
+        label {
+            text-align: center;
+            font-size: 17;
+            color: #777;
+            font-weight: 500;
+        }
+    }    
+    
+}

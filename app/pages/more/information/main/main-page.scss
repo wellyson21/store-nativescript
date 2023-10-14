@@ -1,0 +1,60 @@
+
+.main-page {   
+
+	ActionBar {
+    &.android{
+      padding-right: 10pt;
+		}		
+		Label.la {
+			font-size: 27pt;
+			color: rgb(209, 206, 206);
+		}
+	}
+
+	.container-main {
+		.establishments-item {
+			background-color: #fff;
+			margin: 10pt 10pt 5pt 10pt;
+			border-radius: 10pt;
+			border-width: 0;
+			border-color: rgba(221, 221, 221, 0.733);
+			border-bottom-width: 3pt;
+			border-bottom-style: groove;     
+			orientation: horizontal;
+			.button{
+				border-width: 0;
+				vertical-align: center;
+				font-size: 30pt;
+				margin-top: 30pt;
+				padding-right: 5pt;
+			}
+			.image{
+				border-radius: 5pt 5pt 0 0;
+				width: 90pt;
+				height: 90pt;
+				stretch: fill;
+				border-top-left-radius: 10pt;
+				border-bottom-left-radius: 10pt;
+				border-radius: 3pt;
+			}
+			.title{
+				margin-top: 5pt;        
+				padding: 4pt 10pt 0 10pt;
+				color: rgb(67, 67, 67);
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 16.5pt;        
+				font-weight: 400;
+				margin-bottom: 10pt;
+			}
+			.country,.city{
+				padding: 0 10pt 0 10pt;
+				color: rgb(114, 114, 114);
+				font-style: italic;
+				font-size: 13pt;
+				.label{
+					color: rgb(245, 153, 120);
+				}
+			}
+		}		    
+	}
+}

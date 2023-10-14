@@ -1,0 +1,38 @@
+
+.main-page {   
+
+    .container-main {
+        .container-item {            
+            height: 60;           
+            border-bottom-width: 1;
+            border-bottom-color: lightblue;       
+            gridLayout {
+                color: #666;
+                font-family: "LineAwesome";
+                label {               
+                    vertical-align: middle;     
+                    &.icon {
+                        width: 50;
+                        font-size: 24; 
+                        text-align: center;                       
+                    }
+                    &.label {                    
+                        margin-right: 4;
+                        font-size: 15; 
+                        padding: 0;               
+                    }   
+                    &.icon-disclosure {
+                        width: 33;                        
+                        padding: 0;
+                        margin-right: 5;                       
+                        text-align: center;                                                                         
+                    }                
+                }                       
+            }  
+            &.last {
+                border-bottom-width: 0;          
+            }               
+        }        
+    }
+    
+}

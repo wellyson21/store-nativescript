@@ -1,0 +1,54 @@
+
+@import "../../../shared/styles/theme.scss";
+
+.about-page {
+
+  .container-main {
+    
+    .container-header {
+      height: 200;
+      background-image: url('~/assets/images/img-bg.jpg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      .overlay {
+        background-image: overlayGradient();
+        height: 100%;    
+        vertical-align: middle;
+        label {
+          text-align: center;
+          color: #fff;
+          &.title {       
+            font-size: 40; 
+            margin-top: -30;
+          }
+          &.subtitle {         
+            font-size: 14;             
+          }
+        } 
+      }          
+    }  
+
+    .container-body {
+      width: 100%;     
+      padding: 15 0;  
+      background-color: $secondary-color;   
+      .container-section {
+        margin: 10 0 0;
+        label {
+           &.title {
+            font-size: 20;
+            font-weight: 500;
+            color: #444;
+            text-align: center;
+          }
+        }
+        .content {                  
+          border-width: 0;
+          padding: 10 15 0;                                           
+        }
+      }
+    }
+    
+  }
+}

@@ -1,0 +1,86 @@
+
+@import "../../../shared/styles/theme.scss";
+
+.tab-view-container{
+  height: 100%;
+
+  #tab-view-frames-container{
+ 
+    background-color: transparent;
+  }  
+  
+  .tab-bar-container{
+    background-color: $secondary-color;
+    $tabVieHeight: 56pt;
+    .tab-view {
+
+      orientation: horizontal;
+
+      margin: 5; 
+      background-color: $tab-bar-background-color;
+      height: $tabVieHeight;      
+      border-radius: 10;    
+      vertical-align: middle;   
+      vertical-alignment: center;  
+      padding: 3pt;
+      color: $primary-color;
+      .tab-item {
+        height: 100%;
+        vertical-align: center;   
+        vertical-alignment: center;  
+
+        .tab-item-info{
+          vertical-alignment: center;  
+          vertical-align: center;   
+          height: auto;
+
+          &.tab-bar-highlighted-center-tab{
+
+            width: 42pt;
+            height: 42pt;
+            border-radius: 100%;
+            background-color: $tab-item-unselected-color;
+            padding-left: 7 pt;
+            padding-right: 7pt;
+
+            Image.tab-item-icon{
+
+              margin-top: 0;
+            }
+          }
+
+          .tab-item-icon {           
+            width: 100%; 
+            padding: 0;         
+            text-align:center;
+            font-family: 'LineAwesome';            
+            font-size: 19; 
+            height: $tabVieHeight - 35;
+            // vertical-align: middle;  
+            // background: cyan;
+          }
+
+          Image.tab-item-icon{
+
+            width: 100%;
+            height: $tabVieHeight - 38;
+            // margin-top: 5pt;
+          }
+
+          Image.tab-item-icon + .tab-item-label{
+            
+            margin-top: 4.2pt;
+          }
+
+          .tab-item-label{
+  
+            width: 100%;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}

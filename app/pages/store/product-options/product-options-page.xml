@@ -1,0 +1,109 @@
+<Page loaded="onLoaded" navigatingTo="onNavigatingTo" class="page product-options-page">
+
+  <Page.actionBar>
+    <ActionBar>
+      <Label text="{{ internationalization.store.ProductOptionsPageTitle }}"></Label>
+    </ActionBar>
+  </Page.actionBar>
+
+  <GridLayout rows="auto,*,auto" columns="*" class="container-main">
+
+    <StackLayout row="0" col="0" class="container-header">
+      <GridLayout columns="auto,*" rows="*">
+                                    
+        <StackLayout row="0" col="0" class="container-image">
+          <Image src="{{ data.images[0] }}" />
+        </StackLayout>
+
+        <StackLayout row="0" col="1" class="container-info-product">                                                                            
+          <GridLayout rows="*,auto" columns="*,auto">
+            <StackLayout row="0" colSpan="2">
+              <Label text="{{ data.title }}" textWrap="true" class="title" />
+              <Label text="{{ data.category.name }}" textWrap="true" class="category" />
+            </StackLayout>
+            <StackLayout row="1" col="0" verticalAlignment="middle">
+              <Label text="{{ data.priceRange != null ? (internationalization._settings.currency.symbol + data.priceRange[0] + ' - ' + internationalization._settings.currency.symbol + data.priceRange[1]) : (internationalization._settings.currency.symbol + data.price) }}" class="price" />
+            </StackLayout>
+            <StackLayout row="1" col="1" verticalAlignment="bottom">
+              <Label text="{{ data.quantity + ' ' + internationalization.store.units }}" textWrap="true" class="quantity" />
+            </StackLayout>                                                                                                 
+          </GridLayout>
+        </StackLayout>
+
+      </GridLayout>  
+    </StackLayout>
+
+    <ScrollView row="1" col="0" class="container-body">
+      <StackLayout>
+
+        <Repeater id="repeaterReference" items="{{ data.variations.options }}">
+          <Repeater.itemTemplate>
+            <StackLayout type="{{ $value.type }}" class="container-option">
+              <Label text="{{ $value.title }}" textWrap="true"  class="title" />
+
+              <Repeater items="{{ $value.items }}">
+                <Repeater.itemTemplate>
+
+                <StackLayout class="container-option-items">
+                  <GridLayout rows="auto" columns="auto,*" tap="onRadioButton" itemId="{{ $value.id }}" class="{{ $value.checked != null ? 'option-item active' : 'option-item' }}">
+
+                    <GridLayout row="0" col="0" rows="*" columns="*" visibility="{{ $value.color ? 'visible' : 'collapsed' }}" class="option-with-image">                      
+                      <Image row="0" col="0" backgroundColor="{{ $value.color }}" />
+                      <DockLayout col="0" row="0" height="100%" class="overlay" >
+                        <Label text="&#xf17b;" />
+                      </DockLayout>
+                    </GridLayout>
+
+                    <StackLayout row="0" col="0" class="icon" visibility="{{ !$value.color ? 'visible' : 'collapsed' }}">
+                      <Label text="&#xf17b;" />
+                    </StackLayout>
+
+                    <Label row="0" col="1" text="{{ $value.value }}" textWrap="true" class="label" />
+
+                  </GridLayout>                          
+                </StackLayout>
+              
+                </Repeater.itemTemplate>
+              </Repeater>
+
+            </StackLayout>
+          </Repeater.itemTemplate>
+        </Repeater>       
+
+        <StackLayout class="container-option">
+          <Label text="{{ internationalization.store.quantity + ':' }}" textWrap="true" class="title" />
+          <StackLayout class="container-option-quantity">
+            <GridLayout rows="auto" columns="auto,*">
+              <GridLayout row="0" col="0" rows="auto" columns="auto,auto,auto" class="quantity-control">                
+                <Button row="0" col="0" text="&#xf28e;" tap="onQuantityControl" mode="decrement" />                              
+                <Label row="0" col="1" text="{{ quantityChoice }}" id="displayQuantity" />
+                <Button row="0" col="2" text="&#xf2c2;" tap="onQuantityControl" mode="increment" />
+              </GridLayout>
+              <Label row="0" col="1" text="{{ quantityTotal + ' ' + internationalization.store.unitsAvailable }}" textWrap="true" class="quantity-available" />  
+            </GridLayout>                
+          </StackLayout>
+        </StackLayout>
+
+      </StackLayout>
+    </ScrollView>
+
+    <StackLayout row="2" col="0" class="container-footer">
+      <GridLayout rows="*" columns="auto,*,auto">
+        <StackLayout row="0" col="0" class="container-value">
+          <Label text="{{ internationalization.store.total }}" class="label" />
+          <Label>
+            <FormattedString>
+              <Span text="{{ internationalization._settings.currency.symbol + priceTotal }}" class="value" />
+              <Span text="{{ ' - ' + quantityChoice + ' ' + internationalization.store.units }}" textWrap="true" class="quantity" />       
+            </FormattedString>
+          </Label>              
+        </StackLayout>      
+        <StackLayout row="0" col="3">
+          <Button text="{{ internationalization.store.continueButton }}" class="continue" tap="onFinalize" disable="true" />
+        </StackLayout>
+      </GridLayout>
+    </StackLayout>
+
+  </GridLayout>
+
+</Page>

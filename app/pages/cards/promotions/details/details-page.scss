@@ -1,0 +1,113 @@
+
+@import "../../../shared/styles/theme.scss";
+
+.details-page{
+
+  .container-main {
+    background-color: $secondary-color;      
+    width: 100%;
+    height: 100%;  
+    
+    .container-header {
+      background-image: commonGradient(37%, 85%);      
+      padding: 20pt;
+      width: 100%;
+      border-bottom-left-radius: 5pt;
+      border-bottom-right-radius: 5pt;
+
+       Image{
+         width: 120pt;
+         height: 120pt;
+         border-radius: 50%;
+         stretch: fill;
+       }
+
+       Label{
+        text-align: center;
+        color: #444;
+        margin-top: 10pt;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 19pt;
+       }
+    }
+
+    .container-action{
+      padding-right: 10pt;
+
+      Label{  
+
+        color: rgb(125, 125, 125);
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 15pt;
+        padding: 10pt;
+      }
+
+      Button{
+
+        height: 30pt;
+        text-transform: capitalize;
+        background-color: green;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14pt;
+        padding: 5pt 15pt 5pt 15pt;
+        color: white;
+        border-radius: 50%;
+        &:highlighted{
+
+          color: rgba(232, 232, 232, 0.5);
+        }
+
+        &.sub{
+
+          background-color: green;
+        }
+
+        &.unsub{
+
+          background-color: rgb(244, 70, 70);
+        }
+      }
+    }
+
+    .container-body {
+      padding: 15;
+      min-height: 250;
+      .message {                
+        font-family: Arial, Helvetica, sans-serif;                                         
+        font-size: 14.5;       
+        color: rgb(33, 33, 33);                   
+      }
+    }
+
+    .container-images {            
+      margin: 20 10;                 
+      .image-item {                         
+          margin-left: 2;                                          
+          image {     
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              border-radius: 12;   
+              stretch: fill;                                                         
+          }
+          .overlay {                                                         
+              label {
+                  vertical-align: middle;        
+                  text-align: center;
+                  color: white;
+                  font-size: 26;
+                  font-weight: 700;
+              }
+          }  
+          &.last {
+              border-radius: 12;
+              background-color: #333;
+              image {
+                  opacity: 0.4;  
+              }
+          }                
+      }            
+    }
+  }
+}

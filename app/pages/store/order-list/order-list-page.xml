@@ -1,0 +1,60 @@
+<Page loaded="onLoaded" navigatingTo="onNavigatingTo" class="page order-list-page">
+
+  <Page.actionBar>
+    <ActionBar>
+      <Label text="{{ internationalization.store.OrderListPageTitle }}"></Label>
+    </ActionBar>
+  </Page.actionBar>
+  
+  <AbsoluteLayout width="100%" height="100%">  
+    <StackLayout backgroundColor="white" verticalAlignment="center" left="0" top="0" width="100%" height="100%" visibility="{{ isLoading ? 'visible' : 'collapsed' }}" >
+      <ActivityIndicator busy="true" class="loader" height="50pt" width="50pt" />
+    </StackLayout> 
+    <ScrollView width="100%" height="100%" left="0" top="0" visibility="{{ !isLoading ? 'visible' : 'collapsed' }}">
+      <StackLayout verticalAlignment="{{ dataLength > 0 && !requestLogin ? 'top' : 'center'}}" class="main-container">
+
+        <StackLayout visibility="{{ requestLogin ? 'visible' : 'collapsed' }}" style="margin: 15 30;">
+          <Image src="~/assets/images/placeholders/login.png" style="width: 50%; margin-bottom: 30;" />
+          <Label text="{{ internationalization.store.placeholders.login.title }}" textWrap="true" style="font-size: 17.5; font-weight: 700; color: #777; text-align: center;" />
+          <Label text="{{ internationalization.store.placeholders.login.subtitle }}" textWrap="true" style="font-size: 14; color: #999; text-align: center; padding: 0 5;" />
+          <Button text="{{ internationalization.store.placeholders.login.button }}" style="margin-top: 40; background-color: #FF7373; color: #fff; padding: 5; border-radius: 5;" tap="onLogin" />
+        </StackLayout>
+
+        <StackLayout visibility="{{ !requestLogin ? 'visible' : 'collapsed' }}" class="container-body">
+
+          <StackLayout visibility="{{ !haveDataToDisplay ? 'visible' : 'collapsed' }}" style="margin: 15 30;">
+            <Image src="~/assets/images/placeholders/orders.png" style="width: 50%; margin-bottom: 30;" />
+            <Label text="You do not have any orders yet." textWrap="true" style="font-size: 17.5; font-weight: 600; color: #999; text-align: center;" />                    
+          </StackLayout>
+
+          <Repeater items="{{ totalSearchItems == 0 ? listItems : searchItems }}" visibility="{{ !noResults ? 'visible' : 'collapsed' }}">
+            <Repeater.itemTemplate>
+
+              <GridLayout columns="*,auto" rows="100%" tap="onOpenOrderDetails" productData="{{ $value }}" class="order-item" loaded="onOrderLoaded" items="{{ $value.items }}">
+
+                  <StackLayout row="0" col="0" class="product-item-info">   
+                    <Label class="price" >
+                        <Span text="{{ $value.internationalization._settings.currency.symbol }}"/>
+                        <Span text="{{ $value.totalPrice }}"/>
+                    </Label>
+                    <Label text="{{ $value.quantity + ' '+ $value.internationalization.store.units }}" textWrap="true" class="quantity" />                                                 
+                    <Label text="{{ $value.deliveryStatus }}" class="status" />                                                 
+                  </StackLayout>
+
+                  <StackLayout row="0" col="1" class="right-container">
+                    <button text="&#xf191;" class="btn close la" tap="removeOrder" orderId="{{ $value.id }}" opacity="{{ $value.deliveryStatus == 'delivered' ? 1 : 0 }}"/>                  
+                    <Label text="{{ $value.createDate }}" class="date" />
+                  </StackLayout>
+
+              </GridLayout>
+                
+            </Repeater.itemTemplate>
+          </Repeater>
+
+        </StackLayout>
+
+      </StackLayout>
+    </ScrollView>
+  </AbsoluteLayout>
+
+</Page>

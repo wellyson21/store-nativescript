@@ -1,0 +1,32 @@
+{
+  "nativescript": {
+    "id": "com.ipartts.iParttsApp",
+    "tns-ios": {
+      "version": "5.4.2"
+    },
+    "tns-android": {
+      "version": "5.4.0"
+    }
+  },
+  "description": "NativeScript Application",
+  "license": "SEE LICENSE IN <your-license-filename>",
+  "repository": "<fill-your-repository-here>",
+  "dependencies": {
+    "nativescript-barcodescanner": "^3.2.0",
+    "nativescript-carousel": "^4.1.0",
+    "nativescript-google-maps-sdk": "^2.7.0",
+    "nativescript-imagepicker": "^6.2.0",
+    "nativescript-keyboardshowing": "^1.0.0",
+    "nativescript-plugin-firebase": "^9.0.1",
+    "nativescript-theme-core": "~1.0.4",
+    "tns-core-modules": "~5.4.0",
+    "tns-platform-declarations": "^5.4.2"
+  },
+  "devDependencies": {
+    "nativescript-dev-sass": "^1.7.0",
+    "nativescript-dev-typescript": "~0.10.0",
+    "nativescript-dev-webpack": "~0.24.0"
+  },
+  "gitHead": "8c1a4866a66daab09bf5ef8e5a96472687192373",
+  "readme": "NativeScript Application"
+}

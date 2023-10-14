@@ -1,0 +1,96 @@
+
+@import "../../shared/styles/theme.scss";
+
+.account-page {
+
+    .container-main {
+        background-color: $secondary-color;  
+        font-family: "LineAwesome";      
+        .container-header {
+            padding: 15;           
+            background-image: linear-gradient($primary-color 37%, $secondary-color 85%);
+            .container-image {
+                image {
+                    width: 150;
+                    height: 150;
+                    border-radius: 100%;
+                    border-width: 1;
+                    border-bottom-width: 2;
+                    border-color: white;
+                } 
+                button {       
+                    top: 110;
+                    left: 110;                           
+                }
+            }                              
+            .container-action-buttons {
+                button {
+                    horizontal-align: right;
+                    vertical-align: bottom;
+                }                
+            }
+            .container-image, .container-action-buttons {
+                button {
+                    width: 40;
+                    height: 40;
+                    border-radius: 100%;
+                    background: cyan;                    
+                    border-width: 2;                   
+                    border-color: white;  
+                    padding: 0;       
+                    font-size: 20px;  
+                    color: #555;               
+                } 
+            }            
+            .container-user-info {                         
+                padding-left: 10;
+                label {
+                    font-family: Arial, Helvetica, sans-serif;
+                    text-align: center;
+                    &.name {           
+                        margin-top: 10;             
+                        font-size: 23;                        
+                        color: black;                        
+                    }   
+                    &.email {
+                        font-size: 13px;                        
+                    }                    
+                }
+            }            
+        }
+        .container-body {
+            padding: 15;
+            .container-section {     
+                color: #666;     
+                .header {
+                    .icon-start {
+                        font-size: 24;
+                    }
+                    .title {                    
+                        margin: 0 4;
+                        font-size: 15;                
+                    }
+                    .icon-end {
+                        width: 33;
+                        height: 33;
+                        padding: 0;
+                        border-radius: 100%;
+                        background: #fff;
+                    }
+                    .icon-start, .title, .icon-end {
+                        vertical-align: middle;
+                    }
+                }
+                .content {            
+                    padding: 10 10 15 25; 
+                    label {                                             
+                        padding-top: 5;
+                        padding-bottom: 5;
+                        opacity: 0.8;                      
+                    }
+                }
+            }
+        }        
+    }
+    
+}

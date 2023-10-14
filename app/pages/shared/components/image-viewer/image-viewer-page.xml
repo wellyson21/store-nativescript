@@ -1,0 +1,29 @@
+
+<Page class="image-viewer-page" shownModally="onShownModally">
+
+    <GridLayout rows="auto,*" columns="*" class="container-slideShow">
+        <AbsoluteLayout row="0" col="0" android:class="container-button" >
+            <Button left="0" text="&#xf342;" tap="onClose" />
+        </AbsoluteLayout>
+        <GridLayout row="1" col="0">
+            <ns:Carousel id="myCarousel" items="{{ images }}" selectedPage="{{ index ? index : 0 }}" pageChanged="onCarouselChange" indicatorOffset="0,5" showIndicator="true" xmlns:ns="nativescript-carousel">
+                
+                <Android>
+                    <ns:Carousel.itemTemplate verticalAlignment="center">                        
+                        <Image src="{{ $value }}" />                        
+                    </ns:Carousel.itemTemplate>
+                </Android>
+
+                <Ios>
+                    <ns:Carousel.itemTemplate>
+                        <ns:CarouselItem verticalAlignment="center">
+                            <Image src="{{ $value }}" />
+                        </ns:CarouselItem>
+                    </ns:Carousel.itemTemplate>
+                </Ios>
+
+            </ns:Carousel>
+        </GridLayout>
+    </GridLayout>
+
+</Page>

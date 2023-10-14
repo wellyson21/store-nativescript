@@ -1,0 +1,39 @@
+<Page loaded="onLoaded" navigatingTo="onNavigatingTo" class="page product-categories-page">
+
+  <Page.actionBar>
+    <ActionBar>
+      <Label text="{{ internationalization.store.ProductCategoriesPageTitle }}"></Label>
+    </ActionBar>
+  </Page.actionBar>
+  
+  <ScrollView class="container-main">  
+    <StackLayout>
+
+      <cp:SearchBar xmlns:cp="pages/shared/components/searchBar/search-bar" />
+
+      <StackLayout class="container-categories">
+
+        <StackLayout visibility="{{ noResults ? 'visible' : 'collapsed' }}" style="margin: 50 30 15;" >
+          <Image src="~/assets/images/placeholders/search.png" style="width: 50%; margin-bottom: 30;" />
+          <Label text="No results." textWrap="true" style="font-size: 17.5; color: #999; text-align: center;" />                    
+        </StackLayout>
+
+        <Repeater items="{{ totalSearchItems == 0 ? categoryItems : searchItems }}" visibility="{{ !noResults ? 'visible' : 'collapsed' }}">
+          <Repeater.itemTemplate>
+            <StackLayout class="container-category-item" categoryData="{{ $value }}" tap="onOpenProducts">
+              <GridLayout rows="auto" columns="*">
+                <Image row="0" col="0" src="{{ $value.backgroundImage }}" />
+                <StackLayout row="0" col="0" class="overlay">
+                  <Label text="{{ $value.name }}" textWrap="true" />
+                </StackLayout>
+              </GridLayout>
+            </StackLayout>          
+          </Repeater.itemTemplate>
+        </Repeater>
+
+      </StackLayout>
+
+    </StackLayout>
+  </ScrollView>
+
+</Page>

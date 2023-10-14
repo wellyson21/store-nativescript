@@ -1,0 +1,53 @@
+<Page class="page promotions-page" navigatingTo="onNavigatingTo" loaded="onLoaded">
+
+  <Page.actionBar>
+    <ActionBar>
+      <Label text="{{ internationalization.cards.PromotionsPageTitle }}"/>
+
+      <ios><ActionItem ios.position="left" icon="~/assets/images/menu.png" tap="onToggleMenu" /></ios>
+
+      <android>
+        <NavigationButton icon="res://menu" tap="onToggleMenu" />
+      </android>
+    </ActionBar>
+  </Page.actionBar>
+  
+  
+  <AbsoluteLayout width="100%" height="100%">  
+    <StackLayout backgroundColor="white" verticalAlignment="center" left="0" top="0" width="100%" height="100%" visibility="{{ isLoading ? 'visible' : 'collapsed' }}" >
+      <ActivityIndicator busy="true" class="loader" height="50pt" width="50pt" />
+    </StackLayout> 
+
+     <cm:CustomMenu xmlns:cm="pages/shared/components/menu/custom-menu" id="custom-menu" visibility="{{ !isLoading ? 'visible' : 'collapsed' }}" >
+
+      <ScrollView mainContent="true" width="100%" height="100%" left="0" top="0" class="container-main" id="container-main" iosOverflowSafeArea="false">
+
+        <StackLayout verticalAlignment="{{ dataLength > 0 ? 'top' : 'center' }}">    
+
+          <StackLayout visibility="{{ !haveDataToDisplay ? 'visible' : 'collapsed' }}" style="margin: 15 30;">
+            <Image src="~/assets/images/placeholders/promotions.png" style="width: 50%; margin-bottom: 30;" />
+            <Label text="{{ internationalization.cards.placeholders.promotions.title }}" textWrap="true" style="font-size: 17.5; font-weight: 600; color: #999; text-align: center;" />                
+          </StackLayout>
+          
+          <Repeater visibility="{{ haveDataToDisplay ? 'visible' : 'collapsed' }}" items="{{ promotionsData }}">
+            <Repeater.itemTemplate>
+              
+              <StackLayout tap="onOpenPromotion" class="promotion-item" id="{{ $value.id }}" loaded="onPromotionLoaded">            
+                <Image src="{{ $value.thumbnail }}" class="image" layoutChanged="onPromotionImageLayout" />
+                <Label text="{{ $value.title }}" class="title"></Label>
+                <Label text="{{ $value.internationalization.cards.expireLabel + $value.expireDate }}" class="expire"></Label>            
+              </StackLayout>
+
+            </Repeater.itemTemplate>
+          </Repeater>        
+
+        </StackLayout>
+
+      </ScrollView>
+
+    </cm:CustomMenu> 
+  </AbsoluteLayout>
+
+ 
+
+</Page>

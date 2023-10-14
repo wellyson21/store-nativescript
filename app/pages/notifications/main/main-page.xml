@@ -1,0 +1,97 @@
+
+<Page loaded="onLoaded" navigatedTo="onNavigatedTo" class="page main-page">
+
+	<Page.actionBar>
+		<ActionBar>            
+			<Label text="{{ internationalization.notifications.NotificationsPageTitle }}"></Label>
+		</ActionBar>
+	</Page.actionBar>
+        
+	<AbsoluteLayout width="100%" height="100%">  
+
+		<StackLayout backgroundColor="white" verticalAlignment="center" left="0" top="0" width="100%" height="100%" visibility="{{ isLoading ? 'visible' : 'collapsed' }}" >
+			<ActivityIndicator busy="true" class="loader" height="50pt" width="50pt" />
+		</StackLayout>
+
+		<ScrollView left="0" top="0" width="100%" height="100%" visibility="{{ !isLoading ? 'visible' : 'collapsed' }}" class="container-main" iosOverflowSafeArea="false">
+
+			<StackLayout verticalAlignment="{{ dataLength > 0 ? 'top' : 'center' }}">            
+
+				<StackLayout class="container-overlay">                
+					<StackLayout visibility="{{ !haveDataToDisplay ? 'visible' : 'collapsed' }}" style="margin: 15 30;">
+						<Image src="~/assets/images/placeholders/notifications.png" style="width: 50%; margin-bottom: 30;" />
+						<Label text="{{ internationalization.notifications.placeholder }}" textWrap="true" style="font-size: 17.5; font-weight: 600; color: #999; text-align: center;" />                    
+					</StackLayout>
+				</StackLayout>
+
+				<StackLayout class="container-main" visibility="{{ haveDataToDisplay ? 'visible' : 'collapsed' }}">
+
+					<GridLayout rows="auto" columns="*,auto,auto" class="container-header" visibility="{{ !isLoading ? 'visible' : 'collapsed' }}" >
+						<cp:SearchBar xmlns:cp="pages/shared/components/searchBar/search-bar" />        
+						<!-- <Button row="0" col="1" text="&#xf15c;" /> -->
+					</GridLayout>
+
+					<StackLayout class="container-body" >
+
+						<StackLayout visibility="{{ noResults ? 'visible' : 'collapsed' }}" style="margin: 50 30 15;" >
+							<Image src="~/assets/images/placeholders/search.png" style="width: 50%; margin-bottom: 30;" />
+							<Label text="No results." textWrap="true" style="font-size: 17.5; color: #999; text-align: center;" />                    
+						</StackLayout>
+
+						<Repeater items="{{ totalSearchItems == 0 ? notificationItems : searchItems }}" visibility="{{ !noResults ? 'visible' : 'collapsed' }}">
+							<Repeater.itemTemplate>
+									
+								<GridLayout rows="auto,auto" columns="auto,*" class="section-timeline">
+
+									<StackLayout rowSpan="2" col="0" class="line" />                           
+										
+									<StackLayout row="0" colSpan="2" orientation="horizontal" class="container-mark-date">
+										<Button class="mark" />
+										<Label text="{{ $value.dateFormatted }}" class="date" />
+									</StackLayout>                           
+
+									<StackLayout row="1" col="1">
+										<Repeater items="{{ $value.sections }}" >
+											<Repeater.itemTemplate>
+												<StackLayout>
+
+													<Label text="{{ $value.category.name }}" class="category-title" />
+														
+													<Repeater items="{{ $value.notifications }}" >
+														<Repeater.itemTemplate>
+															<GridLayout columns="auto,*" rows="*" class="container-notification-item" tap="onOpenNotification" notificationData="{{ $value }}">
+
+																<StackLayout row="0" col="0" class="container-image">
+																	<Image src="{{ $value.thumbnail }}"/>                    
+																</StackLayout>
+
+																<StackLayout row="0" col="1" class="container-titles">
+																	<Label text="{{ $value.title }}" textWrap="true" class="title" />
+																	<Label text="{{ $value.subtitle }}" textWrap="true" class="subtitle" />                                                            
+																</StackLayout> 
+
+															</GridLayout>
+														</Repeater.itemTemplate>
+													</Repeater>      
+																								
+												</StackLayout>
+											</Repeater.itemTemplate>
+										</Repeater>
+									</StackLayout>
+
+								</GridLayout>
+									
+							</Repeater.itemTemplate>
+						</Repeater>
+
+					</StackLayout>
+
+				</StackLayout>
+
+			</StackLayout>
+
+		</ScrollView>	
+	
+	</AbsoluteLayout>
+
+</Page>

@@ -1,0 +1,151 @@
+
+<Page class="page location-page" loaded="onPageLoaded">
+
+    <Page.actionBar>
+        <ActionBar>
+            <Label id="actionBarTitle" text=""></Label>
+        </ActionBar>
+    </Page.actionBar>
+    
+    <ScrollView scroll="onScroll" class="container-main">
+        <StackLayout>
+        
+					<StackLayout id="container-scrolling" class="container-header" backgroundImage="{{ data.mainImage }}">    
+							<StackLayout class="overlay">                
+									<Label text="{{ data.name }}" textWrap="true" class="title" />
+							</StackLayout>
+					</StackLayout>
+					
+					<StackLayout class="container-body">
+						
+						<StackLayout class="wraper">
+
+							<StackLayout class="maps-container">
+
+								<maps:mapView id="maps"	xmlns:maps="nativescript-google-maps-sdk" latitude="{{ data.position.latitude }}" longitude="{{ data.position.longitude }}" zoom="300" mapReady="onMapReady" />							
+
+								<StackLayout>
+										<Label text="{{ data.address.line }}" textWrap="true" />
+										<Label textWrap="true">
+												<FormattedString>
+														<Span text="{{ data.address.city }}" />
+														<Span text=" - " />
+														<Span text="{{ data.address.state }}" />
+												</FormattedString>
+										</Label>
+										<Label text="{{ data.address.postalCode }}" textWrap="true" />                       
+										<Label text="{{ data.address.country }}" textWrap="true" />
+								</StackLayout>						
+								
+							</StackLayout>
+
+							<StackLayout class="container-images">
+								<GridLayout columns="*,*,*" rows="*">                    
+									<StackLayout col="0" row="0" class="image-item" tap="onOpenImage" index="0">
+										<Image src="{{ data.slideImages[0] }}" visibility="{{ data.slideImages[0] != null ? 'visible' : 'collapsed' }}" layoutChanged="setHeightImage" />
+									</StackLayout>
+									<StackLayout col="1" row="0" class="image-item" tap="onOpenImage" index="1">
+											<Image src="{{ data.slideImages[1] }}" visibility="{{ data.slideImages[1] != null ? 'visible' : 'collapsed' }}" layoutChanged="setHeightImage" />
+									</StackLayout>                        
+									<StackLayout col="2" row="0" class="{{ data.hasMoreImages ? 'image-item last' : 'image-item' }}" tap="onOpenImage" index="2">
+										<GridLayout columns="*" rows="*">                      
+											<Image col="0" row="0" src="{{ data.slideImages[2] }}" visibility="{{ data.slideImages[2] != null ? 'visible' : 'collapsed' }}" layoutChanged="setHeightImage" />
+											<DockLayout col="0" row="0" height="100%" visibility="{{ data.hasMoreImages ? 'visible' : 'collapsed' }}" class="overlay">     
+												<Label text="{{ '+' + data.moreImages }}" />   
+											</DockLayout>
+										</GridLayout>                   
+									</StackLayout>                       
+								</GridLayout>
+							</StackLayout>  
+							
+						</StackLayout>
+					</StackLayout>
+
+					<StackLayout class="container-contacts">
+							
+						<Label text="{{ internationalization.information.socialNetworks }}" class="section-title"/>
+
+						<StackLayout  class="contact" tap="openContact" url="{{ data.contacts.facebook.url }}" class="contact" visibility="{{ data.contacts.facebook.url != null ? 'visible' : 'collapsed' }}">					
+							<GridLayout rows="auto" columns="auto,*,auto">
+								<StackLayout row="0" col="0" class="container-icon">
+									<Label class="icon fab facebook" text="&#xf09a;"/>
+								</StackLayout>
+								<Label  class="title" row="0" col="1" text="{{ data.contacts.facebook.label }}" class="title"/>
+								<StackLayout row="0" col="2" class="right-button">
+									<Label text="&#xf112;" class="la button"/>       
+								</StackLayout>
+							</GridLayout>
+						</StackLayout>
+
+						<StackLayout class="contact" tap="openContact" url="{{ data.contacts.instagram.url }}" class="contact" visibility="{{ data.contacts.instagram.url != null ? 'visible' : 'collapsed' }}">
+						
+							<GridLayout rows="auto" columns="auto,*,auto">
+								<StackLayout row="0" col="0" class="container-icon">
+									<Label  class="icon fab instagram" text="&#xf16d;"/>
+								</StackLayout>
+									<Label  class="title" row="0" col="1" text="{{ data.contacts.instagram.label }}" class="title"/>
+								<StackLayout row="0" col="2" class="right-button">
+									<Label text="&#xf112;" class="la button"/>       
+								</StackLayout>
+							</GridLayout>
+						</StackLayout>
+
+						<StackLayout class="contact" tap="openContact" url="{{ data.contacts.twitter.url }}" class="contact" visibility="{{ data.contacts.twitter.url != null ? 'visible' : 'collapsed' }}">
+						
+							<GridLayout rows="auto" columns="auto,*,auto">
+								<StackLayout row="0" col="0" class="container-icon">
+									<Label  class="icon fab twitter" text="&#xf081;"/>
+								</StackLayout>
+								<Label row="0" col="1" text="{{ data.contacts.twitter.label }}" class="title"/>
+								<StackLayout row="0" col="2" class="right-button">
+									<Label text="&#xf112;" class="la button"/>       
+								</StackLayout>
+							</GridLayout>
+						</StackLayout>
+						
+						<StackLayout class="contact" tap="openContact" type="whatsapp" url="{{ data.contacts.whatsapp.label }}" visibility="{{ data.contacts.whatsapp.label != null ? 'visible' : 'collapsed' }}">
+						
+							<GridLayout rows="auto" columns="auto,*,auto">
+								<StackLayout row="0" col="0" class="container-icon">
+									<Label  class="icon fab whatsapp" text="&#xf232;"/>
+								</StackLayout>
+									<Label  class="title" row="0" col="1" text="{{ data.contacts.whatsapp.label }}" class="title"/>
+								<StackLayout row="0" col="2" class="right-button">
+									<Label text="&#xf112;" class="la button"/>       
+								</StackLayout>
+							</GridLayout>
+						</StackLayout>
+
+						<Label text="{{ internationalization.information.traditional }}" class="section-title"/>
+						<StackLayout class="contact" tap="openContact" url="{{ 'mailto:' + data.contacts.email.label }}" visibility="{{ data.contacts.email.label != null ? 'visible' : 'collapsed' }}">
+						
+							<GridLayout rows="auto" columns="auto,*,auto">
+								<StackLayout row="0" col="0" class="container-icon">
+									<Label  class="icon la email" text="&#xf1c6;"/>
+								</StackLayout>
+								<Label  class="title" row="0" col="1" text="{{ data.contacts.email.label }}" class="title"/>
+								<StackLayout row="0" col="2" class="right-button">
+									<Label text="&#xf112;" class="la button"/>       
+								</StackLayout>
+							</GridLayout>
+						</StackLayout>
+						
+						<StackLayout class="contact" tap="openContact" url="{{ 'tel://' + data.contacts.phone.label }}" visibility="{{ data.contacts.phone.label != null ? 'visible' : 'collapsed' }}">
+						
+							<GridLayout rows="auto" columns="auto,*,auto">
+								<StackLayout row="0" col="0" class="container-icon">
+									<Label  class="icon la phone" text="&#xf2b3;"/>
+								</StackLayout>
+								<Label  class="title" row="0" col="1" text="{{ data.contacts.phone.label }}"/>
+								<StackLayout row="0" col="2" class="right-button">
+									<Label text="&#xf112;" class="la button"/>       
+								</StackLayout>
+							</GridLayout>
+						</StackLayout>
+							
+					</StackLayout>
+
+        </StackLayout>
+    </ScrollView>   
+    
+</Page>

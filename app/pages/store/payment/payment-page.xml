@@ -1,0 +1,39 @@
+<Page class="page payment-page" loaded="onLoaded" navigatingTo="onNavigatingTo">
+
+  <Page.actionBar>
+    <ActionBar>
+      <Label text="{{ internationalization.store.PaymentPageTitle }}"></Label>
+    </ActionBar>
+  </Page.actionBar>
+  
+  <ScrollView>
+    <AbsoluteLayout width="100%" height="100%">
+               
+      <StackLayout left="0" width="100%" height="100%" verticalAlignment="center" visibility="{{ onRequest ? 'visible' : 'collapsed' }}" style="background-color: rgba(255,255,255,0.65); z-index: 10;">
+          <ActivityIndicator busy="true" class="loader" height="50pt" width="50pt" />
+          <Label text="{{ internationalization.store.loaderLabel }}" style="color: gray; text-align: center; margin-top: 5;" />
+      </StackLayout>    
+
+      <StackLayout left="0" width="100%" height="100%" class="container-content">
+
+        <StackLayout class="container-info">
+          <Label text="{{ internationalization.store.purchaseValue + ':' }}" class="label" />
+          <Label text="{{ internationalization._settings.currency.symbol + (data.items[0].priceTotal ? data.items[0].priceTotal : data.items.priceTotal ) }}" class="value" />
+        </StackLayout>
+
+        <StackLayout class="container-payment-methods">
+
+          <Label text="{{ internationalization.store.choosePaymentMethod + ':' }}" class="label" /> 
+
+          <StackLayout class="btn-paypal" tap="onPaypal">
+            <Image src="~/assets/images/payment/paypal.jpg" />
+          </StackLayout>
+
+        </StackLayout>   
+
+      </StackLayout>       
+
+    </AbsoluteLayout>
+  </ScrollView>
+
+</Page>

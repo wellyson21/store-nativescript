@@ -1,0 +1,37 @@
+
+.product-categories-page {
+
+  .container-main {    
+    .container-category-item {
+      $bRadius: 8;
+
+      height: 150;
+      margin: 10 10 8;
+      padding: 0;
+      border-radius: $bRadius;
+      border-color: #ccc;
+      border-bottom-width: 3;
+      border-bottom-style: groove;
+      image {
+        width: 100%;
+        height: 100%;
+        border-radius: $bRadius;
+        stretch: aspectFill;
+      }
+      .overlay {  
+        height: 100%;      
+        border-radius: $bRadius;        
+        background-color: rgba(20,20,20,0.4);
+        vertical-align: middle;
+        label {        
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 25;
+          text-align: center;
+          padding: 10;
+          color: #fff;          
+        }
+      }      
+    }
+  }
+  
+}

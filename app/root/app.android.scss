@@ -1,0 +1,22 @@
+// Import app variables
+@import 'app-variables';
+
+// Import the theme’s main ruleset - both index and platform specific.
+@import '~nativescript-theme-core/scss/index';
+@import '~nativescript-theme-core/scss/platforms/index.android';
+
+// Import common styles
+@import 'app-common';
+// Place any CSS rules you want to apply only on Android here
+
+.fa {            
+  font-family: "Font Awesome 5 Free-Regular-400";         
+}
+
+.fab {            
+  font-family: "Font Awesome 5 Brands","Font Awesome 5 Brands-Regular-400";           
+}
+
+.fas {            
+  font-family: "Font Awesome 5 Free","Font Awesome 5 Free-Solid-900";            
+}

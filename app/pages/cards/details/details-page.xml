@@ -1,0 +1,60 @@
+<Page
+
+  class="page cards-details"
+  navigatingTo="onNavigatingTo" 
+  loaded="onLoaded"
+  xmlns="http://schemas.nativescript.org/tns.xsd"
+>
+  <Page.actionBar>
+    <ActionBar android:class="android">
+      <Label text="{{ internationalization.cards.CardDetailsPageTitle }}"></Label>
+
+       <ActionItem ios.position="right">
+        <StackLayout orientation="horizontal" class="acumulated-points">
+          <Image src="~/assets/images/coin.png" class="acumulated-points-coin"/>
+          <Label text="{{ acumulatedPoints }}" id="acumulated-points-label" ></Label>
+        </StackLayout>
+      </ActionItem>
+    </ActionBar>
+  </Page.actionBar>  
+
+
+  <AbsoluteLayout width="100%" height="100%">  
+      <StackLayout backgroundColor="white" verticalAlignment="center" left="0" top="0" width="100%" height="100%" visibility="{{ isLoading ? 'visible' : 'collapsed' }}" >
+        <ActivityIndicator busy="true" class="loader" height="50pt" width="50pt" />
+      </StackLayout>  
+
+      <ScrollView class="main-container" width="100%" height="100%" left="0" top="0" visibility="{{ !isLoading ? 'visible' : 'collapsed' }}">
+
+        <GridLayout rows="auto,auto" columns="*">
+
+          <AbsoluteLayout row="0" col="0" class="card-info-container">
+            <StackLayout class="action-buttons">
+              <Button text="&#xf26d;" class="la" visibility="visible" tap="onFillCard" android:class="la android" id="fill-card"></Button>
+              <Button text="&#xf2e9;" class="la" tap="onSaveCard" android:class="la android" id="save-card"></Button>
+              <Button text="&#xf341;" class="la" tap="onCreateTicket" android:class="la android" id="create-ticket"></Button>
+            </StackLayout>
+
+            <StackLayout class="image-and-label-container">
+              <AbsoluteLayout class="image-and-label">
+                <Image src="{{ cardData.thumbnail }}" />
+                <StackLayout class="container-points">
+                  <Label text=" {{ cardData.myPoints +' / '+ cardData.totalPoints }} "></Label>
+                </StackLayout>
+              </AbsoluteLayout>
+            </StackLayout>
+
+            <Label text="Promotion Title" class="title"></Label>
+          </AbsoluteLayout>
+
+          <StackLayout row="1" col="0" class="card-points-container">
+            <GridLayout rows="auto" columns="*,*,*,*" id="card-points-grid"></GridLayout>
+          </StackLayout>
+
+        </GridLayout>
+      </ScrollView>
+  </AbsoluteLayout>
+  
+
+
+</Page>

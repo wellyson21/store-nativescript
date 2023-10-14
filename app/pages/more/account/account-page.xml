@@ -1,0 +1,75 @@
+
+<Page class="page account-page" loaded="onPageLoaded">
+
+    <ActionBar>
+        <Label text="{{ internationalization.account.AccountPageTitle }}" />
+    </ActionBar>
+      
+    <ScrollView class="container-main" iosOverflowSafeArea="false">
+    
+        <StackLayout class="container-contents">
+            
+            <StackLayout class="container-header">
+                <GridLayout columns="*,auto,*" rows="*,*">  
+
+                    <AbsoluteLayout col="1" row="0" class="container-image">
+                        <Image src="{{ profile.photo }}" stretch="fill" />
+                        <Button text="&#xf2b6;" tap="onChoosePhoto"/>
+                    </AbsoluteLayout>                
+
+                    <StackLayout colSpan="3" row="1" class="container-user-info">
+                        <Label text="{{ profile.name }}" class="name" />
+                        <Label text="{{ profile.email }}" class="email" />
+                    </StackLayout>  
+
+                </GridLayout>
+            </StackLayout>
+
+            <StackLayout class="container-body">
+
+                <StackLayout class="container-section">
+
+                    <GridLayout columns="auto,*,auto" rows="*" class="header">
+                        <Label col="0" row="0" text="&#xf27d;" class="icon-start" />
+                        <Label col="1" row="0" text="{{ internationalization.account.address }}" class="title" />
+                        <Button col="2" row="0" text="&#xf1c1;" tap="onOpenModal" command="editAddress" class="icon-end" />
+                    </GridLayout>
+
+                    <StackLayout class="content">
+                        <Label style="text-align: center;margin: 10pt 0 0 0;" text="{{ internationalization.account.noDataLabel }}" visibility="{{ !hasData ? 'visible' : 'collapse' }}"/>
+
+                        <Label text="{{ profile.address.addressLine }}" textWrap="true" />
+                        <Label textWrap="true" visibility="{{ hasData ? 'visible' : 'collapse' }}">
+                            <FormattedString>
+                                <Span text="{{ profile.address.city }}"/>
+                                <Span text=" - "/>
+                                <Span text="{{ profile.address.state }}" />
+                            </FormattedString>
+                        </Label>
+                        <Label text="{{ profile.address.postalCode }}" textWrap="true" />                       
+                        <Label text="{{ profile.address.country }}" textWrap="true" />
+                    </StackLayout>
+
+                </StackLayout>
+
+                <StackLayout class="container-section">
+
+                    <GridLayout columns="auto,*,auto" rows="*" class="header">
+                        <Label col="0" row="0" text="&#xf360;" class="icon-start" />
+                        <Label col="1" row="0" text="{{ internationalization.account.password }}" class="title" />
+                        <Button col="3" row="0" text="&#xf1c1;" tap="onOpenModal" command="editPassword" class="icon-end" />
+                    </GridLayout>   
+
+                    <StackLayout class="content">
+                        <Label text="********" textWrap="true" />                        
+                    </StackLayout> 
+
+                </StackLayout>
+
+            </StackLayout>
+
+        </StackLayout>
+                      
+    </ScrollView>      
+    
+</Page>

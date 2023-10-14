@@ -1,0 +1,123 @@
+<Page loaded="onLoaded" navigatingTo="onNavigatingTo" class="page confirmation-page">
+
+  <Page.actionBar>
+    <ActionBar>
+      <Label text="{{ internationalization.store.ConfirmationPageTitle }}"></Label>
+    </ActionBar>
+  </Page.actionBar> 
+
+  <GridLayout rows="*,auto" columns="*" class="container-main">
+
+    <ScrollView row="0" col="0">
+
+      <StackLayout verticalAlignment="{{ requestLogin ? 'center' : 'top' }}">      
+      
+        <StackLayout visibility="{{ requestLogin ? 'visible' : 'collapsed' }}" style="margin: 15 30;">
+          <Image src="~/assets/images/placeholders/login.png" style="width: 50%; margin-bottom: 30;" />
+          <Label text="{{ internationalization.store.placeholders.login.title }}" textWrap="true" style="font-size: 17.5; font-weight: 700; color: #777; text-align: center;" />
+          <Label text="{{ internationalization.store.placeholders.login.subtitle }}" textWrap="true" style="font-size: 14; color: #999; text-align: center; padding: 0 5;" />
+          <Button text="{{ internationalization.store.placeholders.login.button }}" style="margin-top: 40; background-color: #FF7373; color: #fff; padding: 5; border-radius: 5;" tap="onLogin" />
+        </StackLayout>
+
+        <StackLayout visibility="{{ !requestLogin ? 'visible' : 'collapsed' }}" class="container-body">
+
+          <StackLayout class="container-section">
+
+            <Label text="{{ internationalization.store.deliveryAddress }}" class="title" />
+            <StackLayout class="container-info">     
+              <StackLayout>
+                <Label text="{{ profile.address.addressLine }}" textWrap="true" />
+                <Label textWrap="true">
+                    <FormattedString>
+                        <Span text="{{ profile.address.city }}" />
+                        <Span text=" - " />
+                        <Span text="{{ profile.address.state }}" />
+                    </FormattedString>
+                </Label>
+                <Label text="{{ profile.address.postalCode }}" textWrap="true" />
+                <Label text="{{ profile.address.country }}" textWrap="true" />
+              </StackLayout>            
+            </StackLayout>
+            <Label text="{{ internationalization.store.changeAddress }}" class="change" tap="onProfileChange" />
+          </StackLayout>        
+
+          <StackLayout class="container-section">
+            <Label text="{{ internationalization.store.checkRequest }}" class="title" />
+            <StackLayout class="container-check-request">   
+              <Repeater items="{{ (!items.cartItems ? items : items.cartItems) }}">
+                <Repeater.itemTemplate>
+                  <GridLayout columns="auto,*" rows="auto,auto" tap="{{ onOpenProductDetails }}" itemsData="{{ $value }}" class="cart-item" loaded="onOrderListLoaded">
+                                                  
+                    <StackLayout row="0" col="0" class="container-image">
+                        <Image src="{{ ($value.thumbnail ? $value.thumbnail : $value.product.images[0]) }}" />
+                    </StackLayout>
+
+                    <StackLayout row="0" col="1" class="product-item-info">  
+
+                      <GridLayout rows="auto,*" columns="*,auto">
+
+                        <StackLayout row="0" colSpan="2">                        
+                          <Label text="{{ ($value.title ? $value.title : $value.product.title) }}" textWrap="true" class="title" />
+                        </StackLayout>
+
+                        <StackLayout row="1" colSpan="2">                        
+                          <Label text="{{ $value.internationalization.store.quantity + ': ' + ($value.quantity ? $value.quantity : $value.product.quantity) + ' ' + $value.internationalization.store.units }}" textWrap="true" class="quantity" />
+                          <Label text="{{  $value.internationalization.store.price + ': ' + internationalization._settings.currency.symbol + ($value.priceBase ? $value.priceBase : $value.product.price) }}" textWrap="true" class="price" />
+                        </StackLayout>                                                                      
+                                                                                                          
+                      </GridLayout>  
+
+                    </StackLayout>
+                    
+                    <StackLayout row="1" colSpan="2" class="container-values">
+
+                      <!-- <GridLayout rows="*" columns="*,auto" visibility="{{ $value.priceSend != 0 ? 'visible' : 'collapsed' }}">
+                        <Label col="0" text="{{ $value.internationalization.store.send + ':' }}" class="label-total" />
+                        <Label col="1" text="{{ internationalization._settings.currency.symbol + $value.priceSend }}" class="price" />
+                      </GridLayout>
+                        
+                      <GridLayout rows="*" columns="*,auto">
+                        <Label col="0" text="{{ $value.internationalization.store.subtotal + ':' }}" class="label-total" />
+                        <Label col="1" text="{{ internationalization._settings.currency.symbol + $value.priceSubtotal }}" class="price" />
+                      </GridLayout> -->
+
+                      <GridLayout rows="*" columns="*,auto" class="container-value-total">
+                        <Label col="0" text="{{ $value.internationalization.store.total + ':' }}" class="label-total" />
+                        <Label col="1" text="{{ internationalization._settings.currency.symbol + $value.priceTotal }}" class="price-total" />
+                      </GridLayout>
+
+                    </StackLayout>
+
+                  </GridLayout>                
+
+                </Repeater.itemTemplate>
+              </Repeater>
+            </StackLayout>
+          </StackLayout>
+
+          <StackLayout class="container-order-terms"></StackLayout>
+
+        </StackLayout>
+
+      </StackLayout>
+
+    </ScrollView>
+
+    <StackLayout row="1" col="0" visibility="{{ !requestLogin ? 'visible' : 'collapsed' }}" class="container-footer">
+      <GridLayout rows="*" columns="auto,*,auto">
+
+        <StackLayout row="0" col="0" class="container-value">
+          <Label text="{{ internationalization.store.total }}" class="label" />
+          <Label text="{{ internationalization._settings.currency.symbol + ( items[0].priceTotal ? items[0].priceTotal : items.priceTotal ) }}" class="value" />              
+        </StackLayout>        
+
+        <StackLayout row="0" col="2">
+          <Button text="{{ internationalization.store.confirmButton }}" class="confirm" tap="onConfirm" disable="true" />
+        </StackLayout>
+
+      </GridLayout>
+    </StackLayout>
+
+  </GridLayout>
+
+</Page>

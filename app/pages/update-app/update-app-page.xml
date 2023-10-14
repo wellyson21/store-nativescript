@@ -1,0 +1,16 @@
+<Page class="modal-page" xmlns="http://www.nativescript.org/tns.xsd" shownModally="onShownModally" >
+
+	<GridLayout rows="*, *, *" columns="*" class="main-container" id="main-container">
+		       
+    <StackLayout row="1" col="0" orientation="horizontal" horizontalAlignment="center" class="close-container">
+        <!-- <StackLayout> -->
+  			  <!-- <Label text="O Aplicativo esta destaualizado"/> -->
+        <!-- </StackLayout> -->
+        <!-- <StackLayout horizontalAlignment="center" style="text-align: center;"> -->
+          <Image src="~/assets/images/updateApp/updateApp.png" />
+        <!-- </StackLayout> -->
+		</StackLayout>
+
+	</GridLayout>
+
+</Page>

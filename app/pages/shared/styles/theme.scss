@@ -1,0 +1,31 @@
+
+// Page
+$primary-color: indianred;
+$secondary-color: #efefef;
+
+// ActionBar
+$action-background-color: $primary-color;
+$action-tint-color: rgb(255, 255, 255);
+  // ActionBar Store
+  $action-cart-status-background-color: goldenrod;
+  $action-cart-status-tint-color: #fff;
+
+// Menu
+$menu-background-color: $secondary-color;
+$menu-unselected-background-color: $secondary-color;
+$menu-selected-background-color: rgb(161, 161, 161);
+$menu-unselected-color: #777;
+$menu-selected-color: #fff;
+
+// Tab
+$tab-bar-background-color: #fff;
+$tab-item-unselected-color: $primary-color;
+$tab-item-selected-color: lightgray;
+
+@function commonGradient($size1: 40%, $size2: 90%) {
+  @return linear-gradient($primary-color $size1, $secondary-color $size2);
+}
+
+@function overlayGradient() {
+  @return linear-gradient(rgba(128, 128, 128, 0.6) 82%, $secondary-color 105%);
+}

@@ -1,0 +1,24 @@
+curl -X POST --header "Authorization: key=AAAAV7XKRfA:APA91bFF9SAOJxM6iapkn5bmKBAOnv2fmr9_YB7AokFMgQnfAxqfYh1QjEKGgV77BFylrynVC0ZiQxzzXgv3Gh4ghgThdBD5rFk4OQIMKQWxn_svNbFEHNiMiY8cynO-yboy9EboCMfl" --Header "Content-Type: application/json" https://fcm.googleapis.com/fcm/send -d "{\"notification\":{\"click_action\":\"GENERAL\",\"title\": \"My title\", \"text\": \"My text\", \"badge\": \"0\", \"sound\": \"default\",\"showWhenInForeground\": true}, \"data\":{\"entity\":\"Notification\"}, \"priority\": \"High\", \"to\": \"eAkVMPePXRU:APA91bFErjYv3lLAUrlp3keAhXQmq8gP6mGnrQBX3-Akdlnwa5XrBN4SyDLHgjQt8T2xr8oRG1iAEu48wq6TVB4qedbXu4TKvzn_1pftsMf4vO17hkQg6JMwFGYy4lPKV8uXnKozzxVR\"}"
+
+
+Android: eAkVMPePXRU:APA91bFErjYv3lLAUrlp3keAhXQmq8gP6mGnrQBX3-Akdlnwa5XrBN4SyDLHgjQt8T2xr8oRG1iAEu48wq6TVB4qedbXu4TKvzn_1pftsMf4vO17hkQg6JMwFGYy4lPKV8uXnKozzxVR
+
+
+iOS: fHpXiXzUCgg:APA91bGMt_F-t7c0ZSiucd-wI3sXFp0nBCVCO0hrmdt8dsckB_YseIecGXc6kni16q7u4g_PVPC29NbpHt78OSfT77M69teVumtTsyvRG9uazU-Y45Xu53scMnab694mKc2osdo_Q7yN
+
+curl -X POST --header "Content-Type:application/json" --header "Authorization:key=AAAAEYe3b-4:APA91bERN8btcy0Czc7BuTh86_aDYvusptL6Q_emSlmJZbllWuz5Ezhu9ibK6NT2UUbWuvhgO0bCPLvvMWspFMAAOYeLQnQEqs3lfQhcoxi_nQyy6VNFqfnswOYUTNeNPv5E8VJSOFIC" https://iid.googleapis.com/iid/v1/dy9l5JRGR_k:APA91bEw_aNbYKB_FD6D3aOTuJmh3h6haFeWzBKrncwuZeGQ9OlgE0BN3nNxVcLijEhb82S-qsVTLNe4IJJzVxQ2UG9KHKNxqZpGdYzUDRWDBcw-6HLDc2tGDS3Vs9HQXMPp7_cv34GC/rel/topics/default
+
+curl -X GET --header "Authorization:key=AAAAEYe3b-4:APA91bERN8btcy0Czc7BuTh86_aDYvusptL6Q_emSlmJZbllWuz5Ezhu9ibK6NT2UUbWuvhgO0bCPLvvMWspFMAAOYeLQnQEqs3lfQhcoxi_nQyy6VNFqfnswOYUTNeNPv5E8VJSOFIC" https://iid.googleapis.com/iid/info/dy9l5JRGR_k:APA91bEw_aNbYKB_FD6D3aOTuJmh3h6haFeWzBKrncwuZeGQ9OlgE0BN3nNxVcLijEhb82S-qsVTLNe4IJJzVxQ2UG9KHKNxqZpGdYzUDRWDBcw-6HLDc2tGDS3Vs9HQXMPp7_cv34GC
+
+curl -X POST -H "Authorization: Bearer AAAAEYe3b-4:APA91bERN8btcy0Czc7BuTh86_aDYvusptL6Q_emSlmJZbllWuz5Ezhu9ibK6NT2UUbWuvhgO0bCPLvvMWspFMAAOYeLQnQEqs3lfQhcoxi_nQyy6VNFqfnswOYUTNeNPv5E8VJSOFIC" -H "Content-Type: application/json" -d '{"notification":{"title": "FCM Message","body": "This is a Firebase Cloud Messaging Topic Message!"},"topic" : "default"}' "https://fcm.googleapis.com/v1/projects/fidelitycard-52d13/messages:send HTTP/1.1"
+
+
+
+
+
+
+curl -X POST --header "Authorization: key=AAAAEYe3b-4:APA91bERN8btcy0Czc7BuTh86_aDYvusptL6Q_emSlmJZbllWuz5Ezhu9ibK6NT2UUbWuvhgO0bCPLvvMWspFMAAOYeLQnQEqs3lfQhcoxi_nQyy6VNFqfnswOYUTNeNPv5E8VJSOFIC" --header "Content-Type: application/json" -d '
+ {"notification":{"title": "title", "sound":"default", "body": "body","showWhenInForeground": "true"},"to": "/topics/default","priority": "High","data": {"prop": "10"}}' "https://fcm.googleapis.com/fcm/send"
+
+curl -X POST --header "Content-Type:application/json" --header "Authorization:key=AAAAEYe3b-4:APA91bERN8btcy0Czc7BuTh86_aDYvusptL6Q_emSlmJZbllWuz5Ezhu9ibK6NT2UUbWuvhgO0bCPLvvMWspFMAAOYeLQnQEqs3lfQhcoxi_nQyy6VNFqfnswOYUTNeNPv5E8VJSOFIC" -d  "{\"notification\":{\"click_action\":\"GENERAL\",\"title\": \"My title\", \"text\": \"My text\", \"badge\": \"0\", \"sound\": \"default\",\"showWhenInForeground\": true}, \"data\":{\"e
+  

@@ -1,0 +1,28 @@
+
+<Page class="page main-page" loaded="onPageLoaded" navigatingTo="onNavigatingTo">
+
+    <Page.actionBar>
+        <ActionBar>
+            <Label text="Outras"></Label>
+        </ActionBar>
+    </Page.actionBar>
+      
+    <ScrollView class="container-main">
+        <StackLayout>  
+
+            <Repeater items="{{ optionItems }}">
+                <Repeater.itemTemplate>
+                    <StackLayout tap="onOpenOption" path="{{ $value.moduleName }}" class="container-item">                
+                        <GridLayout columns="auto,*,auto" rows="*">                
+                            <Label col="0" text="{{ $value.icon }}" class="icon" />               
+                            <Label col="1" text="{{ $value.label }}" textWrap="true" class="label" />
+                            <label col="2" text="&#xf112;" class="icon-disclosure" />
+                        </GridLayout>
+                    </StackLayout>   
+                </Repeater.itemTemplate>
+            </Repeater>
+
+        </StackLayout>         
+    </ScrollView>       
+    
+</Page>

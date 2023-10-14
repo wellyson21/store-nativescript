@@ -1,0 +1,37 @@
+
+@import "../../shared/styles/theme.scss";
+
+.payment-page {
+
+  .container-info {    
+    padding: 15 10;
+    background-color: rgba(255,255,255,0.5);
+    .label {
+      color: $primary-color;
+      font-size: 14;
+    }
+    .value {
+      font-size: 25;
+      color: goldenrod;
+      font-weight: 500;
+      margin-top: 5;
+    }
+  }
+
+  .container-payment-methods {
+    padding: 15 10;
+    .label {
+      color: $primary-color;
+      font-size: 15;
+      margin: 10 0 15;
+    }
+    .btn-paypal {
+      background-color: white;
+      border-radius: 8; 
+      image {
+        margin: 0 15;
+      }
+    }
+  }
+  
+}

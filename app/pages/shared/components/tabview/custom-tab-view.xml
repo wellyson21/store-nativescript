@@ -1,0 +1,43 @@
+
+<GridLayout class="tab-view-container" rows="*,auto" columns="*">
+
+  <StackLayout row="0" id="tab-view-frames-container"></StackLayout>
+
+  <GridLayout row="1" dock="bottom" columns="*" rows="auto">
+    <StackLayout row="1" class="tab-bar-container" id="tab-bar-container">
+        <StackLayout class="tab-view" id="tabs-container">
+          
+          <StackLayout flexGrow="1" class="tab-item" tap="{{ onTabItem }}" path="pages/cards/main/cards-page">                                 
+            <StackLayout class="tab-item-info">
+              <Label text="&#xf1aa;" class="tab-item-icon" />
+            </StackLayout>  
+          </StackLayout>
+          
+          <StackLayout flexGrow="1" class="tab-item"  tap="{{ onTabItem }}" path="pages/store/main/main-page">                 
+            <StackLayout class="tab-item-info">              
+              <Image src="~/assets/images/tabs/store.png" class="tab-item-icon"/>
+            </StackLayout>
+          </StackLayout>
+
+          <StackLayout flexGrow="1" class="tab-item" tap="{{ onTabItem }}" path="pages/notifications/main/main-page">             
+            <StackLayout class="tab-item-info" >
+              <Label text="&#xf140;" class="tab-item-icon" />
+            </StackLayout>  
+          </StackLayout>    
+
+          <!-- <StackLayout flexGrow="1" class="tab-item" tap="{{ onTabItem }}" path="pages/more/information/main/main-page">             
+            <StackLayout class="tab-item-info">
+              <Label text="&#xf27d;" class="tab-item-icon"/>
+            </StackLayout>  
+          </StackLayout>
+
+          <StackLayout flexGrow="1" class="tab-item" tap="{{ onTabItem }}" path="pages/more/main/main-page">        
+            <StackLayout class="tab-item-info" >             
+              <Label text="&#xf1c4;" class="tab-item-icon" />
+            </StackLayout>  
+          </StackLayout> -->
+
+        </StackLayout>
+      </StackLayout>
+  </GridLayout>
+</GridLayout>

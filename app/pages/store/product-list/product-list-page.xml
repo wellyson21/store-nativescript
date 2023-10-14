@@ -1,0 +1,32 @@
+<Page loaded="onLoaded" navigatingTo="onNavigatingTo" class="page product-list-page">
+
+  <Page.actionBar>
+    <ActionBar>
+      <Label text="{{ pageTitle }}"></Label>
+    </ActionBar>
+  </Page.actionBar>
+  
+  <ScrollView class="container-main">
+    <StackLayout>
+
+      <cp:SearchBar xmlns:cp="pages/shared/components/searchBar/search-bar" />
+
+      <StackLayout class="container-products">
+
+        <StackLayout visibility="{{ noResults ? 'visible' : 'collapsed' }}" style="margin: 50 30 15;" >
+          <Image src="~/assets/images/placeholders/search.png" style="width: 50%; margin-bottom: 30;" />
+          <Label text="No results." textWrap="true" style="font-size: 17.5; font-weight: 600; color: #999; text-align: center;" />                    
+        </StackLayout>
+
+        <Repeater items="{{ totalSearchItems == 0 ? listItems : searchItems }}" visibility="{{ !noResults ? 'visible' : 'collapsed' }}">
+          <Repeater.itemTemplate>
+            <cp:ProductItem xmlns:cp="pages/store/-shared/components/product-item/product-item"/>              
+          </Repeater.itemTemplate>
+        </Repeater>
+      
+      </StackLayout>
+
+    </StackLayout>
+  </ScrollView>
+
+</Page>

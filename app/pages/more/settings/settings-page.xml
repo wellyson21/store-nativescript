@@ -1,0 +1,24 @@
+
+<Page class="page settings-page" loaded="onPageLoaded" navigatingTo="onNavigatingTo">
+
+    <Page.actionBar>
+        <ActionBar>
+            <Label text="Settings" />
+        </ActionBar>
+    </Page.actionBar>
+      
+    <ScrollView class="container-main">
+
+        <StackLayout class="container-section">
+            <GridLayout columns="auto,*" rows="*" class="section-header">
+                <Label col="0" text="&#xf258;" class="icon" />
+                <Label col="1" text="Choose a language:" textWrap="true" class="label" />               
+            </GridLayout> 
+            <StackLayout class="section-body">
+                <ListPicker colSpan="3" row="1" loaded="onListPickerLoaded" items="{{ items }}" textField="name" valueField="role" selectedIndex="{{ index }}" />          
+            </StackLayout>
+        </StackLayout>    
+
+    </ScrollView>       
+    
+</Page>

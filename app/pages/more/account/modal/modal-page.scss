@@ -1,0 +1,46 @@
+
+.modal-page {    
+	.main-container{
+
+		padding: 20pt;
+		width: 100%;
+
+		.close-container{
+
+			padding-top: 20pt;
+		}
+		.close{
+
+			color: rgb(238, 93, 93);
+			font-size: 30pt;
+			background: rgba(255, 255, 255, 0);
+		}
+	}
+	.container-body {       
+		margin: 10;       
+		background-color: rgba(255, 255, 255, 0);
+
+		textfield {
+			border-bottom-width: 1;
+			border-bottom-color: #aaa;
+			margin-bottom: 8;
+			height: 35pt;
+			font-size: 13pt;
+		}
+		button {
+			background-color: goldenrod;
+			color: white;  
+			height: 35pt;  
+			margin-top: 5pt;      
+			border-radius: 5pt;
+		}   
+		
+		
+		.box{
+			background-color: rgba(240, 248, 255, 0.329);
+			border-radius: 10pt;
+			padding: 25pt 15pt;
+		}
+	}
+
+}

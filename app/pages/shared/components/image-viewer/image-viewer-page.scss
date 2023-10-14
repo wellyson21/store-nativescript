@@ -1,0 +1,24 @@
+
+.image-viewer-page {    
+    gridLayout {
+        background-color: black;
+    }
+    .container-button {
+        margin-top: 20;
+    }
+    button {
+        font-family: 'LineAwesome'; 
+        font-size: 30;
+        width: 50; 
+        height: 50; 
+        border-radius: 100%; 
+        background-color: transparent; 
+        color: #fff; 
+    }
+    image {
+        padding: 0 5 50;
+        border-width: 2;
+        border-color: transparent;
+        // stretch: none;
+    }
+}

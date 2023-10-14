@@ -1,0 +1,35 @@
+
+.settings-page {   
+
+  .container-main {
+    .container-section {             
+      .section-header {
+        color: #666;
+        font-family: "LineAwesome";
+        padding: 10;          
+        label {               
+          vertical-align: middle;         
+          &.icon {
+            width: 35;
+            font-size: 24; 
+            text-align: left;                       
+          }
+          &.label {                    
+            margin-right: 4;
+            font-size: 15; 
+            padding: 0;               
+          }                              
+        }                       
+      }   
+      .section-body {        
+        margin: 0 10;        
+        listPicker {
+          border-width: 1;
+          border-color: #ddd;
+          border-radius: 5;          
+        }
+      }                 
+    }       
+  }
+    
+}

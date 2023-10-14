@@ -1,0 +1,30 @@
+
+<GridLayout columns="auto,*" rows="100%" tap="{{ onOpenProductDetails }}" productData="{{ $value }}" class="product-item">
+                                        
+    <StackLayout row="0" col="0" class="container-image">
+        <Image id="productImage" src="{{ $value.thumbnail }}" />                    
+    </StackLayout>
+
+    <StackLayout row="0" col="1" class="product-item-info">   
+        <GridLayout rows="*,25pt" columns="*,auto">
+            <StackLayout row="0" colSpan="2">
+                <Label text="{{ $value.name }}" textWrap="true" class="title" />                                                    
+                <Label text="{{ $value.category.name }}" textWrap="true" class="category" />                                                 
+            </StackLayout>
+            <StackLayout row="1" col="0" verticalAlignment="middle" >
+                <Label class="price" >
+                    <FormattedString>
+                        <Span text="{{ internationalization._settings.currency.symbol }}"/>
+                        <Span text="{{ $value.priceRange != null ? $value.priceRange[0] : $value.price }}"/>
+                    </FormattedString>
+                </Label>
+
+            </StackLayout>
+            <StackLayout row="1" col="1" orientation="horizontal">
+                <Button text="&#xf16e;" class="btn add-in-cart" tap="{{ onOpenProductOptions }}" mode="forCart" />
+                <Button text="{{ internationalization.store.buyButton }}" class="btn buy" tap="{{ onOpenProductOptions }}" mode="forBuy" />
+            </StackLayout>                                                                                 
+        </GridLayout>
+    </StackLayout>
+
+</GridLayout>

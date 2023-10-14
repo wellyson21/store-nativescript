@@ -1,0 +1,86 @@
+
+<Page class="modal-page" xmlns="http://www.nativescript.org/tns.xsd" shownModally="onShownModally" >
+				
+
+	<GridLayout rows="auto, *" columns="*" class="main-container" id="main-container" opacity="0">
+	
+		<StackLayout row="0" col="0" orientation="horizontal" horizontalAlignment="center" class="close-container">
+			<Label text="&#xf191;" class="la close" tap="onClose"/>
+		</StackLayout>
+		<ScrollView row="1" col="0" class="container-body" backgroundColor="rgba(255, 255, 255, 0)">  
+
+			<StackLayout verticalAlignment="center" width="100%" height="100%">
+				
+				<StackLayout class="box">
+					<StackLayout visibility="{{ editAddress ? 'visible' : 'collapsed' }}">
+						<GridLayout rows="auto,auto,auto,auto,auto" columns="*">
+
+							<StackLayout row="0">
+								<Label text="Address Line" textWrap="true" />
+								<TextField hint="" text="{{ data.profile.address.addressLine }}" />                        
+							</StackLayout> 
+
+							
+							<StackLayout row="1">
+								<Label text="Postal Code" textWrap="true" />
+								<TextField hint="" text="{{ data.profile.address.postalCode }}" />                        
+							</StackLayout> 
+
+							<StackLayout row="2">
+								<Label text="City" textWrap="true" />
+								<TextField hint="" text="{{ data.profile.address.city }}" />                        
+							</StackLayout> 
+
+							<StackLayout row="3">
+								<Label text="State" textWrap="true" />
+								<TextField hint="" text="{{ data.profile.address.state }}" />                        
+							</StackLayout> 
+
+							<StackLayout row="4">
+								<Label text="Country" textWrap="true" />
+								<TextField hint="" text="{{ data.profile.address.country }}" />                        
+							</StackLayout>                                   
+
+						</GridLayout>
+					</StackLayout>
+
+					<StackLayout visibility="{{ editPhone ? 'visible' : 'collapsed' }}">
+						<GridLayout rows="auto,auto" columns="*">
+							<StackLayout row="0">
+								<Label text="Phone" textWrap="true" />
+								<TextField hint="+00 01 0101-0101" keyboardType="phone" text="{{  }}" />
+							</StackLayout>                 
+						</GridLayout>
+					</StackLayout>
+
+					<StackLayout  visibility="{{ editPassword ? 'visible' : 'collapsed' }}">
+						<GridLayout rows="auto,auto,auto" columns="*">
+
+							<StackLayout row="0">
+								<Label text="Current Password" textWrap="true" />
+								<TextField hint="*******" secure="true" text="{{  }}" id="currentPassword"/>
+							</StackLayout>     
+
+							<StackLayout row="1">
+								<Label text="New Password" textWrap="true" />
+								<TextField hint="*******" secure="true" text="{{  }}" id="newPassword"/>
+							</StackLayout>       
+
+							<StackLayout row="2">
+								<Label text="Confirm Password" textWrap="true" />
+								<TextField hint="*******" secure="true" text="{{  }}" id="confirmPassword"/>
+							</StackLayout>                
+
+						</GridLayout>
+					</StackLayout>
+
+					<Button text="Save" tap="onSave" />   
+				</StackLayout>
+		
+			                    
+
+			</StackLayout>
+		</ScrollView>         
+	</GridLayout>
+
+</Page>

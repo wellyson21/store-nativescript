@@ -1,0 +1,131 @@
+
+@import "../../shared/styles/theme.scss";
+
+.confirmation-page {
+  
+  .container-main {
+    .container-body {
+      background-color: $secondary-color;
+      padding: 8;      
+      .container-section {
+        border-radius: 5;
+        border-width: 1;
+        border-color: #ddd;
+        background-color: #fff;
+        padding: 10;
+        margin-bottom: 10;
+        & > label {
+          &.title {
+            font-size: 15;
+            font-weight: 500;
+            color: #333;
+            text-align: center;      
+            margin-bottom: 5;
+          }
+          &.change {
+            color: violet;
+            text-align: center;
+            font-weight: 500;
+            padding: 5;
+          }
+        }
+        .container-info {
+          margin-top: 8;                
+          label {
+            font-size: 13;
+            color: #5f5f5f;
+          }          
+        }
+        .container-check-request {
+          margin: 8 0;
+          .cart-item {
+            $borderRadius: 5;    
+            
+            margin-bottom: 5;          
+            border-radius: $borderRadius;
+            padding: 3 3 8;
+            .container-image {
+              width: 30%;
+              image {
+                width: 100%;             
+                border-radius: $borderRadius;
+              }           
+            }
+            .product-item-info {
+              margin-left: 7;                  
+              .title {
+                font-size: 16;
+                color: #444;
+                margin-right: 5;           
+              }
+              .quantity {
+                margin-top: 8;
+              }
+              .quantity, .price {
+                font-size: 14;
+                color: coral;
+              }              
+            }
+            .container-values {
+              padding-top: 8;
+              label {
+                color: #777;
+              }
+              .price {
+                color: #777;
+                font-size: 14;
+              }
+              .container-value-total {
+                border-top-width: 1;
+                border-top-color: #e0e0e0;
+                margin-top: 4;
+                padding-top: 4;             
+                label {
+                  font-weight: 500;
+                }
+                .label-total, .price-total {
+                  color: #444;
+                  font-size: 15;
+                }
+              }
+              
+            }            
+          }
+        }
+      }
+    }
+    .container-footer {
+      border-top-width: 1;
+      border-top-color: #ccc;
+      background: $secondary-color;
+      .container-value {
+        padding: 0 15;
+        .label {
+          font-size: 12;
+        }
+        .value {
+          font-size: 17;
+          font-weight: 600;
+          color: #454545;
+        }        
+      }     
+      button {       
+        &.confirm {       
+          height: 35;
+          border-radius: 5;
+          background-color: coral;
+          color: white;
+          margin: 5 10;
+          font-size: 16;
+          font-weight: 500;
+          text-transform: capitalize;
+          padding: 0 8; 
+        }
+      }     
+      stacklayout {
+        vertical-align: middle;
+      }
+    }
+  }
+
+}

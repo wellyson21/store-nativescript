@@ -1,0 +1,132 @@
+<nsDrawer:RadSideDrawer xmlns:nsDrawer="nativescript-ui-sidedrawer" id="CustomMenu">
+  
+  <nsDrawer:RadSideDrawer.drawerContent>
+    <ScrollView>
+      <GridLayout rows="auto,*">
+
+        <StackLayout row="0" class="container-header" id="custom-menu-header">
+            <GridLayout columns="*,auto,*" rows="*,*">   
+
+                <StackLayout col="1" row="0" class="container-image">
+                    <Image src="~/assets/images/img-2.jpg" />                            
+                </StackLayout>              
+
+                <StackLayout colSpan="3" row="1" class="container-user-info">
+                    <Label text="" class="name" />
+                    <Label text="" class="email" />
+                </StackLayout> 
+
+            </GridLayout>
+        </StackLayout>
+        
+        <StackLayout row="1" class="container-body" id="custom-menu-body">
+
+            <StackLayout class="item active" hasSubmenu="true"> 
+
+                <GridLayout rows="*" columns="auto,*" class="item-option">
+                    <Label row="0" col="0" text="&#xf141;" class="icon" />
+                    <Label row="0" col="1" text="Notifications" class="label" />
+                </GridLayout>   
+
+                <StackLayout class="submenu" visibility="visible" id="0">
+
+                    <StackLayout class="item-sm active-sm" path="pages/cards/main/cards-page">
+                        <GridLayout rows="*" columns="auto,*" class="item-option item-option-sm">
+                            <Label row="0" col="0" text="&#xf31b;" class="icon" />
+                            <Label row="0" col="1" text="Favorites" class="label" />
+                        </GridLayout> 
+                    </StackLayout>
+
+                    <StackLayout class="item-sm">
+                        <GridLayout rows="*" columns="auto,*" class="item-option item-option-sm">
+                            <Label row="0" col="0" text="&#xf31b;" class="icon" />
+                            <Label row="0" col="1" text="Favorites" class="label" />
+                        </GridLayout> 
+                    </StackLayout>  
+
+                    <StackLayout class="item-sm">
+                        <GridLayout rows="*" columns="auto,*" class="item-option item-option-sm">
+                            <Label row="0" col="0" text="&#xf31b;" class="icon" />
+                            <Label row="0" col="1" text="Favorites" class="label" />
+                        </GridLayout> 
+                    </StackLayout> 
+
+                </StackLayout>  
+
+            </StackLayout>
+
+            <StackLayout class="item" hasSubmenu="true">
+
+                <GridLayout rows="*" columns="auto,*" class="item-option">
+                    <Label row="0" col="0" text="&#xf31b;" class="icon" />
+                    <Label row="0" col="1" text="Favorites" class="label" />
+                </GridLayout>
+
+                <StackLayout class="submenu" visibility="collapsed">
+
+                    <StackLayout class="item-sm active-sm">
+                        <GridLayout rows="*" columns="auto,*" class="item-option item-option-sm">
+                            <Label row="0" col="0" text="&#xf31b;" class="icon" />
+                            <Label row="0" col="1" text="Favorites" class="label" />
+                        </GridLayout> 
+                    </StackLayout>
+
+                    <StackLayout class="item-sm">
+                        <GridLayout rows="*" columns="auto,*" class="item-option item-option-sm">
+                            <Label row="0" col="0" text="&#xf31b;" class="icon" />
+                            <Label row="0" col="1" text="Favorites" class="label" />
+                        </GridLayout> 
+                    </StackLayout>  
+
+                    <StackLayout class="item-sm">
+                        <GridLayout rows="*" columns="auto,*" class="item-option item-option-sm">
+                            <Label row="0" col="0" text="&#xf31b;" class="icon" />
+                            <Label row="0" col="1" text="Favorites" class="label" />
+                        </GridLayout> 
+                    </StackLayout> 
+
+                </StackLayout>
+
+            </StackLayout>
+
+            <StackLayout class="item">
+                <Button text="Option Three" class="item-option" />                            
+            </StackLayout>
+
+            <StackLayout class="item">
+                <Button text="Option Four" class="item-option" />
+            </StackLayout>
+
+            <StackLayout class="item">
+                <Button text="Option Five" class="item-option" />
+            </StackLayout>
+
+        </StackLayout>               
+
+      </GridLayout>
+    </ScrollView>
+  </nsDrawer:RadSideDrawer.drawerContent>
+
+  <nsDrawer:RadSideDrawer.mainContent>           
+    <ScrollView row="0" class="container-main">     
+      <ListView items="{{ listItems }}" itemTap="onItemTap" loaded="onListViewLoaded" separatorColor="lightblue" class="container-list-view">
+        <ListView.itemTemplate>                
+          <GridLayout columns="auto,*" rows="*" class="container-list-item">
+
+            <StackLayout row="0" col="0" class="container-image">
+                <Image src="{{ imagePath }}" />                    
+            </StackLayout>
+
+            <StackLayout row="0" col="1" class="container-titles">
+                <Label text="{{ title }}" textWrap="true" class="title" />
+                <Label text="{{ subtitle }}" textWrap="true" class="subtitle" />
+                <Label text="{{ date }}" textWrap="true" class="date" />                                
+            </StackLayout> 
+
+          </GridLayout>
+        </ListView.itemTemplate>
+      </ListView>     
+    </ScrollView>  
+  </nsDrawer:RadSideDrawer.mainContent>
+
+</nsDrawer:RadSideDrawer>   

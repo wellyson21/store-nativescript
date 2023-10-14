@@ -1,0 +1,73 @@
+
+<Page class="page main-page" loaded="onLoaded">
+
+    <Page.actionBar>
+        <ActionBar android:class="android">
+            <Label text="{{  internationalization.store.StorePageTitle }}"></Label>
+            <ActionItem ios.position="right" class="action-item-right">
+                <AbsoluteLayout orientation="horizontal" class="btn-cart" tap="onOpenCart">
+                    <Image src="~/assets/images/cart.png" />
+                    <Label text="{{ countCartItems }}" backgroundColor="{{ countCartItems == 0 ? 'red' : '' }}" class="quantity" />
+                </AbsoluteLayout>
+            </ActionItem>
+        </ActionBar>        
+    </Page.actionBar>
+
+    <StackLayout verticalAlignment="{{ dataLength > 0 ? 'top' : 'center' }}">            
+
+        <AbsoluteLayout width="100%" height="100%">
+        
+            <ScrollView left="0" top="0"  width="100%" height="100%" scroll="onScroll" class="container-main" iosOverflowSafeArea="false">
+
+                <StackLayout class="container-contents" visibility="{{ haveDataToDisplay ? 'visible' : 'collapsed' }}">
+
+                    <StackLayout id="container-scrolling" class="container-header">
+
+                        <GridLayout class="container-slideShow" layoutChanged="setHeightImage">
+                            <ns:Carousel id="myCarousel" items="{{ slideItems }}" pageChanged="onCarouselChanged" finite="true" indicatorOffset="0,10" showIndicator="true" xmlns:ns="nativescript-carousel">
+                                <ns:Carousel.itemTemplate>
+                                    <ns:CarouselItem verticalAlignment="bottom">
+                                        <Image src="{{ banner }}" stretch="fill" width="100%"/>
+                                    </ns:CarouselItem>
+                                </ns:Carousel.itemTemplate>
+                            </ns:Carousel>
+                        </GridLayout>
+
+                        <StackLayout class="container-search-categories">
+                            <GridLayout rows="auto" columns="*,auto,*">
+                                <StackLayout row="0" col="1" orientation="horizontal">
+                                    <Button text="&#xf318;" class="categories" tap="onOpenOrderList" class="order-list" />                                                                    
+                                    <Button text="&#xf26c;" class="categories" tap="onOpenProductCategories" class="categories" />
+                                    <Button text="&#xf2eb;" class="search" tap="onOpenProductSearch" class="search" />
+                                </StackLayout>
+                            </GridLayout>
+                        </StackLayout>
+
+                    </StackLayout>
+
+                    <StackLayout class="container-body">
+
+                        <Repeater items="{{ listItems }}">
+                            <Repeater.itemTemplate>
+
+                                <cp:ProductItem xmlns:cp="pages/store/-shared/components/product-item/product-item"/>
+
+                            </Repeater.itemTemplate>
+                        </Repeater>
+
+                    </StackLayout>
+
+                </StackLayout>
+
+            </ScrollView>
+            
+            <StackLayout backgroundColor="white" verticalAlignment="center" left="0" top="0" width="100%" height="100%" visibility="{{ isLoading ? 'visible' : 'collapsed' }}" >
+                <ActivityIndicator busy="true" class="loader" height="50pt" width="50pt" />                
+            </StackLayout>                
+
+        </AbsoluteLayout>
+        
+
+    </StackLayout>
+    
+</Page>

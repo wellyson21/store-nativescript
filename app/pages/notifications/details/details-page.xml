@@ -1,0 +1,55 @@
+
+<Page loaded="onLoaded" class="page details-page">
+
+    <Page.actionBar>        
+        <ActionBar>            
+            <Label text="{{ internationalization.notifications.NotificationDetailsPageTitle }}"></Label>            
+        </ActionBar>
+    </Page.actionBar> 
+        
+    <ScrollView row="0" class="container-main">  
+        <StackLayout>
+
+            <StackLayout class="container-header">
+                <GridLayout columns="auto,*" rows="auto">
+                    <StackLayout row="0" col="0" class="container-image">
+                        <Image src="{{ data.thumbnail }}"/>                    
+                    </StackLayout>
+                    <StackLayout row="0" col="1" class="container-titles">
+                        <Label text="{{ data.title }}" textWrap="true" class="title" />
+                        <Label text="{{ data.subtitle }}" textWrap="true" class="subtitle" />
+                        <GridLayout rows="auto" columns="*,auto">
+                            <Label row="0" col="0" text="{{ data.category.name }}" textWrap="true" class="category" />                        
+                            <Label row="0" col="1" text="{{ data.dateFormatted }}" textWrap="true" class="date" />
+                        </GridLayout>
+                    </StackLayout>                    
+                </GridLayout>  
+            </StackLayout>
+            
+            <StackLayout class="container-body">
+                <HtmlView html="{{ data.message }}" class="message" />                    
+            </StackLayout>
+
+            <StackLayout class="container-images">
+                <GridLayout columns="*,*,*" rows="*">                    
+                    <StackLayout col="0" row="0" class="image-item" tap="onOpenImage" index="0">
+                        <Image src="{{ data.images[0] }}" visibility="{{ data.images[0] != null ? 'visible' : 'collapsed' }}" layoutChanged="setHeightImage" />
+                    </StackLayout>
+                    <StackLayout col="1" row="0" class="image-item" tap="onOpenImage" index="1">
+                        <Image src="{{ data.images[1] }}" visibility="{{ data.images[1] != null ? 'visible' : 'collapsed' }}" layoutChanged="setHeightImage" />
+                    </StackLayout>                        
+                    <StackLayout col="2" row="0" class="{{ data.hasMoreImages ? 'image-item last' : 'image-item' }}" tap="onOpenImage" index="2">
+                        <GridLayout columns="*" rows="*">                      
+                            <Image col="0" row="0" src="{{ data.images[2] }}" visibility="{{ data.images[2] != null ? 'visible' : 'collapsed' }}" layoutChanged="setHeightImage" />
+                            <DockLayout col="0" row="0" visibility="{{ data.hasMoreImages ? 'visible' : 'collapsed' }}" class="overlay">
+                                <Label text="{{ '+' + data.moreImages }}" />   
+                            </DockLayout>
+                        </GridLayout>                   
+                    </StackLayout>                       
+                </GridLayout>
+            </StackLayout>   
+
+        </StackLayout>            
+    </ScrollView>
+
+</Page>

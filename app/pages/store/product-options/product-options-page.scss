@@ -1,0 +1,195 @@
+
+@import "../../shared/styles/theme.scss";
+
+.product-options-page {
+  background-color: $secondary-color;
+
+  .container-main {
+    .container-header {
+      padding: 8;
+      border-bottom-width: 2;
+      border-bottom-color: #ddd;
+      border-bottom-style: groove;
+      height: 96;
+      .container-image {             
+        image {
+          width: 80;
+          height: 80;             
+          border-radius: 5;
+        }           
+      }
+      .container-info-product {
+        padding: 0 8;    
+        height: 80; 
+        .title {
+          font-size: 17.5;
+          color: #444;              
+        }
+        .category {
+          font-size: 12.5;
+          color: coral;
+        }
+        .quantity {
+          font-size: 12;
+          color: #888;
+        }
+        .price {
+          color: goldenrod;
+          font-size: 16;
+          font-weight: 500;
+        }                    
+      }
+    }
+    .container-body {
+      background-color: rgba(255,255,255,0.5);
+      .container-option {
+        padding: 10;
+        .title {
+          font-size: 16;
+          font-weight: 500;
+          color: #676767; 
+        }        
+        .container-option-items {
+          margin-top: 10;          
+          padding-left: 5;
+          .option-item {
+            padding: 2 0;
+            .option-with-image {
+              $bRadius: 100%;
+
+              background-color: #777;
+              border-radius: $bRadius;
+              border-width: 2;
+              border-color: #fff;
+              image {
+                width: 60;
+                height: 60;
+                border-radius: $bRadius;
+              }
+              .overlay {
+                label {
+                  color: transparent;                
+                  font-family: "LineAwesome";
+                  font-size: 25;
+                  font-weight: 900;
+                  text-align: center;          
+                  vertical-align: middle;                                              
+                }                
+              }
+            }             
+            .icon {
+              $size: 28;
+
+              width: $size;
+              height: $size;              
+              margin: 0;              
+              border-radius: 100%;              
+              border-width: 2;
+              border-color: lightgray;
+              vertical-align: middle;      
+              label {              
+                margin-top: 2;            
+                font-family: "LineAwesome";
+                font-size: 15;
+                font-weight: 900;
+                color: transparent;
+                text-align: center;            
+              }          
+            }             
+            .label {
+              margin-left: 10;
+              font-size: 16;
+              vertical-align: middle;              
+            }           
+            &.active {
+              .option-with-image { 
+                image {
+                  opacity: 0.6;
+                }               
+                .overlay {                  
+                  label {
+                    color: #fff;
+                  }
+                }
+              } 
+              .icon {
+                border-color: goldenrod;                
+                label {
+                  color: goldenrod;
+                }
+              }                 
+            }
+          }
+        }
+        .container-option-quantity {
+          margin-top: 10;          
+          padding-left: 5;
+          .quantity-control {
+            border-width: 1;
+            border-color: #ddd;
+            background: #fff;
+            border-radius: 100%;
+            button {
+              width: 35;
+              height: 35;           
+              border-radius: 100%;
+              background-color: #fff;              
+              padding: 0;
+              margin: 0;
+              color: gray;             
+              font-family: "LineAwesome";          
+            }
+            label {
+              color: #222;
+              padding: 0 6;
+              font-size: 12;
+            }            
+          }
+          .quantity-available {
+            margin-left: 10;
+            font-size: 11;
+          }
+          button, label {
+            vertical-align: middle;
+          }
+        }
+      }
+    }
+    .container-footer {
+      border-top-width: 1;
+      border-top-color: #ccc;
+      .container-value {
+        padding: 0 15;
+        .label {
+          font-size: 12;
+        }
+        .value {
+          font-size: 17;
+          font-weight: 700;
+          color: #454545;
+        }
+        .quantity {
+          font-size: 12;
+          color: #888;
+        }
+      }         
+      button {        
+        &.continue {
+          height: 35;
+          border-radius: 5;
+          background-color: coral;
+          color: white;
+          margin: 5 10;
+          font-size: 16;
+          font-weight: 500;
+          text-transform: capitalize;
+          padding: 0 8;
+        }
+      }    
+      stacklayout {
+        vertical-align: middle;
+      }
+    }
+  }
+
+}

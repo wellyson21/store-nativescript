@@ -1,0 +1,104 @@
+<Page loaded="onLoaded" navigatingTo="onNavigatingTo" class="page cart-page">
+
+  <Page.actionBar>
+    <ActionBar>
+      <Label text="{{ internationalization.store.CartPageTitle }}"></Label>
+    </ActionBar>
+  </Page.actionBar>
+                
+  <AbsoluteLayout width="100%" height="100%">  
+ 
+    <StackLayout backgroundColor="white" verticalAlignment="center" left="0" top="0" width="100%" height="100%" visibility="{{ isLoading ? 'visible' : 'collapsed' }}" >
+      <ActivityIndicator busy="true" class="loader" height="50pt" width="50pt" />
+    </StackLayout> 
+
+    <GridLayout left="0" top="0" width="100%" height="100%" rows="*,auto" columns="*" class="container-main" visibility="{{ !isLoading ? 'visible' : 'collapsed' }}">
+
+      <ScrollView row="0" col="0">
+
+        <StackLayout verticalAlignment="{{ dataLength > 0 ? 'top' : 'center' }}">
+
+          <StackLayout class="container-overlay">
+
+            <StackLayout visibility="{{ !haveDataToDisplay ? 'visible' : 'collapsed' }}" style="margin: 15 30;">
+              <Image src="~/assets/images/placeholders/cart.png" style="width: 50%; margin-bottom: 30;" />
+              <Label text="{{ internationalization.store.placeholders.cart }}" textWrap="true" style="font-size: 17.5; font-weight: 600; color: #999; text-align: center;" />                    
+            </StackLayout>
+
+          </StackLayout>
+
+          <StackLayout class="container-body" visibility="{{ haveDataToDisplay ? 'visible' : 'collapsed' }}">
+
+            <Repeater id="repeaterCartItems" items="{{ cartItems }}">
+              <Repeater.itemTemplate>
+                <GridLayout columns="auto,*" rows="*" tap="{{ onOpenProductDetails }}" itemsData="{{ $value }}" class="cart-item" loaded="onCartItemLoaded" visibility="{{ $value.product ? 'visible' : 'collapsed' }}">
+                                                
+                  <StackLayout row="0" col="0" class="container-image">
+                      <Image src="{{ $value.product.images[0] }}" />
+                  </StackLayout>
+
+                  <StackLayout row="0" col="1" class="product-item-info">                                                                            
+                      <GridLayout rows="*,auto" columns="*,auto">
+
+                        <StackLayout row="0" colSpan="2">
+                            <GridLayout row="*" columns="*,auto" verticalAlignment="center">
+
+                              <StackLayout row="0" col="0">
+                                <Label text="{{ $value.product.name }}" textWrap="true" class="title" />                              
+                                <Label text="{{ $value.internationalization.store.available + ': ' + $value.product.quantity + ' ' + $value.internationalization.store.units }}" textWrap="true" class="quantity" />
+                                <Label text="{{ $value.internationalization.store.send + ': $' + $value.priceSend }}" textWrap="true" class="send" visibility="{{ $value.priceSend != 0 ? 'visible' : 'collapsed' }}" />
+                              </StackLayout>
+
+                              <StackLayout row="0" col="1">
+                                <Button text="&#xf191;" itemId="{{ $value.id }}" tap="onRemoveItem" class="remove" />  
+                              </StackLayout>
+
+                            </GridLayout>                          
+                        </StackLayout>                     
+                                                
+                        <GridLayout row="1" colSpan="2" rows="auto" columns="*,auto">
+
+                          <StackLayout row="0" col="0" verticalAlignment="center">
+                            <Label text="{{ internationalization._settings.currency.symbol + $value.priceTotal }}" class="price" />
+                          </StackLayout>
+
+                          <StackLayout row="0" col="1" itemId="{{ $value.id }}" class="container-option-quantity">                          
+                            <GridLayout rows="auto" columns="auto,auto,auto" class="quantity-control">                
+                              <Button row="0" col="0" text="&#xf28e;" tap="onQuantityControl" mode="decrement" />
+                              <Label row="0" col="1" text="{{ $value.quantity }}" id="displayQuantity" />
+                              <Button row="0" col="2" text="&#xf2c2;" tap="onQuantityControl" mode="increment" />
+                            </GridLayout>                          
+                          </StackLayout>
+
+                        </GridLayout>                         
+                                                                                                          
+                      </GridLayout>
+                  </StackLayout>
+
+                </GridLayout>
+              </Repeater.itemTemplate>
+            </Repeater>
+
+          </StackLayout>
+
+        </StackLayout>
+
+      </ScrollView>
+
+      <StackLayout row="1" col="0" class="container-footer" visibility="{{ priceTotal && priceTotal != 0 && haveDataToDisplay ? 'visible' : 'collapsed' }}">
+        <GridLayout rows="*" columns="auto,*,auto,auto">
+          <StackLayout row="0" col="0" class="container-value">
+            <Label text="{{ internationalization.store.total }}" class="label" />
+            <Label text="{{ internationalization._settings.currency.symbol + priceTotal }}" class="value" />              
+          </StackLayout>
+          <StackLayout row="0" col="3">
+            <Button text="{{ internationalization.store.buyButton }}" class="buy" tap="onBuy" />
+          </StackLayout>
+        </GridLayout>
+      </StackLayout>
+
+    </GridLayout>
+
+  </AbsoluteLayout>
+
+</Page>

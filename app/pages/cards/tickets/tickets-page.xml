@@ -1,0 +1,81 @@
+<Page class="page tickets-page" navigatingTo="onNavigatingTo" loaded="onLoaded">
+
+  <Page.actionBar>
+    <ActionBar>
+      <Label text="Tickets"/>
+
+      <ios>
+        <ActionItem ios.position="left" icon="~/assets/images/menu.png" tap="onToggleMenu" />
+      </ios>
+
+      <android>
+        <NavigationButton icon="res://menu" tap="onToggleMenu" />
+      </android>
+    </ActionBar>
+  </Page.actionBar>
+
+  <AbsoluteLayout width="100%" height="100%">  
+    <StackLayout backgroundColor="white" verticalAlignment="center" left="0" top="0" width="100%" height="100%" visibility="{{ isLoading ? 'visible' : 'collapsed' }}" >
+      <ActivityIndicator busy="true" class="loader" height="50pt" width="50pt" />
+    </StackLayout> 
+
+    <cm:CustomMenu width="100%" height="100%" left="0" top="0" xmlns:cm="pages/shared/components/menu/custom-menu" id="custom-menu" visibility="{{ !isLoading ? 'visible' : 'collapsed' }}" >
+
+      <ScrollView mainContent="true" id="main-content" iosOverflowSafeArea="false">           
+
+        <StackLayout class="container-main" id="cards-container" verticalAlignment="{{ dataLength > 0 ? 'top' : 'center'}}">    
+
+          <StackLayout visibility="{{ !haveDataToDisplay ? 'visible' : 'collapsed' }}" style="margin: 15 30;">
+            <Image src="~/assets/images/placeholders/tickets.png" style="width: 50%; margin-bottom: 30;" />
+            <Label text="{{ internationalization.cards.placeholders.tickets.title }}" textWrap="true" style="font-size: 17.5; font-weight: 700; color: #777; text-align: center;" />
+            <Label text="{{ internationalization.cards.placeholders.tickets.subtitle }}" textWrap="true" style="font-size: 14; color: #999; text-align: center; padding: 0 5;" />        
+          </StackLayout>
+
+          <Repeater visibility="{{ haveDataToDisplay ? 'visible' : 'collapsed' }}" items="{{ ticketsData }}">
+            <Repeater.itemTemplate>
+
+              <StackLayout class="ticket-container" code="{{ $value.code }}" loaded="onTicketLoaded">
+                  <StackLayout class="ticket-inner-container">
+                    <StackLayout class="header-container">
+                      <Image src="{{ $value.thumbnail }}" />
+                      <StackLayout>
+                        <Label text="{{ $value.title }}" class="title"></Label>
+                        <Label text="{{ $value.internationalization.cards.createInLabel + $value.createDate }}" class="created"></Label>
+                      </StackLayout>
+                    </StackLayout>
+
+                    <StackLayout class="body-container">
+                      <GridLayout rows="auto" columns="*,auto">
+
+                        <StackLayout row="0" col="0" class="container-left">
+                          <Label>
+                            <FormattedString>
+                              <Span text="{{ $value.internationalization.cards.codeLabel }}" />
+                              <Span text="{{ $value.code}}" class="code" />
+                            </FormattedString>
+                          </Label> 
+                        </StackLayout>
+
+                        <StackLayout row="0" col="1" class="container-right" android:class="container-right android">
+                          <Button text="&#xf24b;" class="la" tap="onOpenPromotion" promotionId="{{ $value.promotionId }}"></Button>
+                          <Button text="&#xf2ca;" class="la" tap="onReadQRCode" ticketId="{{ $value.id }}"></Button>
+                        </StackLayout>
+
+                      </GridLayout>
+                    </StackLayout>
+                  
+                  </StackLayout>
+                </StackLayout>
+
+            </Repeater.itemTemplate>
+          </Repeater> 
+
+        </StackLayout>
+
+      </ScrollView>
+      
+    </cm:CustomMenu>
+  </AbsoluteLayout>
+
+
+</Page>

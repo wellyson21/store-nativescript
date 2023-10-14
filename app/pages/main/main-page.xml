@@ -1,0 +1,6 @@
+
+<Page class="page" loaded="onLoaded" xmlns:ui="pages/shared/components/tabview/custom-tab-view">
+
+  <ui:CustomTabView selectedIndex="1" id="tabView"/>
+
+</Page>

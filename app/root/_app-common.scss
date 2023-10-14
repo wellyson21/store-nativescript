@@ -1,0 +1,42 @@
+// Place any CSS rules you want to apply on both iOS and Android here.
+// This is where the vast majority of your CSS code goes.
+// Font icon class
+
+@import '~nativescript-theme-core/css/core.light.css';
+@import "../pages/shared/styles/theme.scss";
+
+Page {
+  
+  background-color: $secondary-color;
+
+  ActionBar {
+    background-color: $action-background-color;
+    color: $action-tint-color;
+    font-weight: 800;
+    font-size: 16px;
+  }
+  
+  ScrollView {
+    background-color: $secondary-color;
+  }
+}
+
+.la {
+  font-family: "LineAwesome";
+}
+
+.hide {
+  visibility: hidden;
+}
+
+.show {
+  visibility: visible;
+}
+
+.loader{
+  color: $primary-color;
+}
+
+HtmlView{
+  background-color: rgba(255, 255, 255, 0);
+}

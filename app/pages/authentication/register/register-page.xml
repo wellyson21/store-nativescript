@@ -1,0 +1,44 @@
+<Page class="page page-content register-page" loaded="onPageLoaded" navigatedTo="onNavigatedTo" shownModally="onShownModally"> 
+  
+  <AbsoluteLayout width="100%" minHeight="100%" > 
+
+    <StackLayout left="0" width="100%" height="100%" verticalAlignment="center" visibility="{{ onRequest ? 'visible' : 'collapsed' }}" style="background-color: rgba(255,255,255,0.75); z-index: 10;">
+      <ActivityIndicator busy="true" class="loader" height="50pt" width="50pt" />
+      <Label text="{{ internationalization.register.loaderLabel }}" style="color: gray; text-align: center; margin-top: 5;" />
+    </StackLayout>
+
+    <ScrollView id="scrollView" width="100%" height="100%">
+      <StackLayout verticalAlignment="center" id="contForm" visibility="{{ !onRequest ? 'visible' : 'collapsed' }}">
+
+        <AbsoluteLayout width="100%" minHeight="100%">       
+
+          <StackLayout left="0" width="100%" height="100%" verticalAlignment="center">
+            <StackLayout class="container-form">
+
+              <GridLayout rows="auto" columns="auto,*,auto" class="header">
+                <Button row="0" col="0" text="&#xf111;" tap="onBack" class="btn-back" />
+                <Label row="0" col="1" text="{{ internationalization.register.headerTitle }}" textWrap="true" class="title" />
+                <StackLayout row="0" col="2" width="40" />
+              </GridLayout>      
+
+              <StackLayout id="contTextFields">
+                <TextField hint="{{ internationalization.register.formHints.name }}" id="name" />
+                <!-- <TextField hint="{{ internationalization.register.formHints.phone }}" id="phone" keyboardType="phone" /> -->
+                <TextField hint="{{ internationalization.register.formHints.email }}" id="email" keyboardType="email" />
+                <TextField hint="{{ internationalization.register.formHints.password }}" id="password" maxLength="10" secure="true" returnPress="onRegister" />
+                <TextField hint="{{ internationalization.register.formHints.confirmPassword }}" id="confirm-password" maxLength="10" secure="true" />
+              </StackLayout>
+
+              <Button text="{{ internationalization.register.formButtons.register }}" tap="onRegister" class="btn-submit" height="50" />
+
+            </StackLayout>
+          </StackLayout>
+
+        </AbsoluteLayout>
+
+      </StackLayout>    
+    </ScrollView>  
+
+  </AbsoluteLayout>
+
+</Page>

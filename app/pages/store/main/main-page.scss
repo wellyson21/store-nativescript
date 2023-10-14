@@ -1,0 +1,64 @@
+
+@import "../../shared/styles/theme.scss";
+@import "../-shared/styles/store-style.scss";
+
+.main-page {
+
+  .container-main {
+
+    .container-header {
+      background-image: commonGradient(45%, 100%);    
+      .container-slideShow {
+        margin: 5 10 0;        
+        image {         
+          border-radius: 5; 
+          width: 100%;
+          height: 100%;
+          stretch: fill;
+        }
+      }
+      .container-search-categories {
+        margin: 8 5;
+        button {
+          $size: 50;
+
+          font-family: "LineAwesome";
+          width: $size;
+          height: $size;
+          padding: 0;
+          margin: 5;
+          background-color: #fff;
+          border-radius: 100%;
+          font-size: 22;
+          font-weight: 900;
+          color: #fff; 
+          &.order-list {
+            background-color: gold;
+          }
+          &.categories {
+            background-color: red;
+          }
+          &.search {
+            background-color: rgb(150, 190, 223);
+          }     
+        }
+      }
+    }
+
+    .container-body {
+      margin-bottom: 15;
+      padding: 15 10 0;
+      background-color: $secondary-color;   
+      
+      .container-section {
+        padding: 5 10 0;
+        .title-section {
+          padding-bottom: 10;
+          font-size: 18.5;
+        }
+      }
+    }
+
+  }
+
+}

@@ -1,0 +1,83 @@
+
+<Page class="page main-page" loaded="onPageLoaded" navigatingTo="onNavigatingTo">
+
+	<Page.actionBar>
+		<ActionBar android:class="android">
+			<Label text="{{internationalization.information.MainTitle}}"></Label>
+			<!-- <ActionItem ios.position="right">
+				<Label text="&#xf1ce;" class="la" tap="openAbout"/>
+			</ActionItem> -->
+		</ActionBar>
+	</Page.actionBar>      
+
+  <AbsoluteLayout width="100%" height="100%">
+
+    <StackLayout backgroundColor="white" verticalAlignment="center" left="0" top="0" width="100%" height="100%" visibility="{{ isLoading ? 'visible' : 'collapsed' }}" >
+      <ActivityIndicator busy="true" class="loader" height="50pt" width="50pt" />
+    </StackLayout>
+
+    <ScrollView  left="0" top="0" class="container-main" width="100%" height="100%" visibility="{{ !isLoading ? 'visible' : 'collapsed' }}">				
+
+			<StackLayout verticalAlignment="{{ dataLength > 0 ? 'top' : 'center'}}">
+
+				<StackLayout class="container-overlay">
+					<StackLayout visibility="{{ !haveDataToDisplay ? 'visible' : 'collapsed' }}" style="margin: 15 30;">
+						<Image src="~/assets/images/placeholders/establishment.png" style="width: 50%; margin-bottom: 30;" />
+						<Label text="{{ internationalization.information.placeholders.main.title }}" textWrap="true" style="font-size: 17.5; font-weight: 600; color: #999; text-align: center;" />
+					</StackLayout>
+				</StackLayout>
+
+				<StackLayout class="container-main" visibility="{{ haveDataToDisplay ? 'visible' : 'collapsed' }}">
+
+					<cp:SearchBar xmlns:cp="pages/shared/components/searchBar/search-bar" visibility="{{ haveDataToDisplay ? 'visible' : 'collapsed' }}" />
+
+					<StackLayout class="container-body">
+
+						<StackLayout visibility="{{ noResults ? 'visible' : 'collapsed' }}" style="margin: 50 30 15;" >
+							<Image src="~/assets/images/placeholders/search.png" style="width: 50%; margin-bottom: 30;" />
+							<Label text="No results." textWrap="true" style="font-size: 17.5; color: #999; text-align: center;" />                    
+						</StackLayout>
+
+						<Repeater items="{{ totalSearchItems == 0 ? establishments : searchItems }}" visibility="{{ !noResults ? 'visible' : 'collapsed' }}">
+							<Repeater.itemTemplate>
+										
+								<GridLayout row="auto" columns="auto,*,auto" tap="openEstablishment" eid="{{ $value.id }}" class="establishments-item" loaded="onEstablishmentLoaded">            
+									
+									<Image row="0" col="0" src="{{ $value.mainImage }}" class="image" layoutChanged="onPromotionImageLayout"/>
+
+									<StackLayout row="0" col="1">
+
+										<Label text="{{ $value.name }}" class="title"></Label>
+										
+										<Label class="city">
+											<FormattedString>
+												<Span text="{{ $value.address.city }}" />
+												<Span text=" - " />
+												<Span text="{{ $value.address.state }}" />
+											</FormattedString>
+										</Label>
+
+										<Label class="country" text="{{ $value.address.country }}" />
+										
+									</StackLayout>
+
+									<StackLayout row="0" col="2" class="right-button">
+										<Label text="&#xf112;" class="la button"/>       
+									</StackLayout>
+									
+								</GridLayout>
+											
+							</Repeater.itemTemplate>
+						</Repeater>
+
+					</StackLayout>						
+
+				</StackLayout>					 
+
+			</StackLayout>
+
+    </ScrollView>   
+
+  </AbsoluteLayout>  
+    
+</Page>

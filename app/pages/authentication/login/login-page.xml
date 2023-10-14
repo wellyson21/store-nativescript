@@ -1,0 +1,55 @@
+<Page class="page page-content login-page" loaded="onPageLoaded" navigatedTo="onNavigatedTo" shownModally="onShownModally">
+
+  <AbsoluteLayout width="100%" height="100%">
+    
+    <StackLayout left="0" width="100%" height="100%" verticalAlignment="center" visibility="{{ onRequest ? 'visible' : 'collapsed' }}" style="background-color: rgba(255,255,255,0.75); z-index: 10;">
+      <ActivityIndicator busy="true" class="loader" height="50" width="50" />
+      <Label text="{{ internationalization.login.loaderLabel }}" style="color: gray; text-align: center; margin-top: 5;" />
+    </StackLayout>
+
+    <ScrollView id="scrollView" width="100%" height="100%" mainContent="true">
+      <StackLayout verticalAlignment="center" id="contForm" visibility="{{ !onRequest ? 'visible' : 'collapsed' }}">
+
+        <GridLayout rows="auto" columns="*,auto,*" visibility="{{ hideCloseButton ? 'collapsed' : 'visible' }}">
+          <Button row="0" col="1" class="la btnClose" text="&#xf191;" tap="onCloseModal" />
+        </GridLayout>
+
+        <AbsoluteLayout width="100%" minHeight="100%">        
+
+          <StackLayout left="0" width="100%" height="100%" verticalAlignment="center">
+            <StackLayout class="container-form">
+
+              <Label text="{{ setting.phrase }}" textWrap="true" class="title" />
+
+              <StackLayout id="contTextFields">
+                <TextField hint="{{ internationalization.login.formHints.email }}" keyboardType="email" id="email" />
+                <TextField hint="{{ internationalization.login.formHints.password }}" maxLength="10" secure="true" id="password" returnPress="onLogin" />
+              </StackLayout>          
+
+              <Button text="{{ internationalization.login.formButtons.login }}" tap="onLogin" class="btn-submit" heignt="50" />
+
+              <!-- <StackLayout class="social-networks">
+
+                <Label text="{{ internationalization.login.alternativeLoginLabel }}" class="lb-aternative-login" />
+
+                <StackLayout orientation="horizontal" horizontalAlignment="center" class="social-medias">        
+                  <Button text="&#xf39e;" tap="onLoginFacebook" class="fab facebook" />    
+                  <Button text="&#xf1a0;" tap="onLoginGoogle" class="fab google" />
+                  <Button text="&#xf099;" tap="onLoginTwitter" class="fab twitter last" />
+                </StackLayout>
+
+              </StackLayout> -->
+
+              <Button text="{{ internationalization.login.formButtons.register }}" tap="onRegister" class="btn-register" heignt="50" />
+
+            </StackLayout>
+          </StackLayout>       
+
+        </AbsoluteLayout>
+
+      </StackLayout>        
+    </ScrollView>
+
+  </AbsoluteLayout>
+  
+</Page>

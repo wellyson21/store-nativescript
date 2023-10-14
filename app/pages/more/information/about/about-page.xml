@@ -1,0 +1,35 @@
+
+<Page class="page about-page" loaded="onPageLoaded" navigatedFrom="natigatedFrom">
+
+    <Page.actionBar>
+        <ActionBar>
+            <Label id="actionBarTitle" text=""></Label>
+        </ActionBar>
+    </Page.actionBar>
+    
+    <ScrollView scroll="onScroll" class="container-main" iosOverflowSafeArea="false">
+        <StackLayout>
+        
+            <StackLayout id="container-scrolling" class="container-header">    
+                <StackLayout class="overlay">                
+                    <Label text="Sobre Nós" textWrap="true" class="title" />
+                    <!-- <Label text="It is a long established fact that a reader." textWrap="true" class="subtitle" /> -->
+                </StackLayout>
+            </StackLayout>
+
+            
+            <StackLayout class="container-body">
+                <Repeater items="{{ sectionsData }}" id="repeater">
+                    <Repeater.itemTemplate>
+                        <StackLayout class="container-section" layoutChanged="onSectionLayout">
+                            <Label row="0" text="{{ $value.title }}" textWrap="true" class="title" />
+                            <HtmlView html="{{ $value.description }}" class="content" id="htmlView" height="{{ fssectionHeight }}"/>
+                        </StackLayout>
+                    </Repeater.itemTemplate>
+                </Repeater>
+            </StackLayout>
+
+        </StackLayout>
+    </ScrollView>   
+    
+</Page>

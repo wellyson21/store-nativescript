@@ -1,0 +1,38 @@
+<Page loaded="onLoaded" navigatingTo="onNavigatingTo" class="page details-page">
+
+  <Page.actionBar>
+    <ActionBar>
+      <Label text="{{ internationalization.store.OrderDetailsPageTitle }}"></Label>
+    </ActionBar>
+  </Page.actionBar>
+  
+  <ScrollView>
+    <StackLayout class="main-container">
+
+       <Repeater items="{{ items }}">
+          <Repeater.itemTemplate>
+
+            <GridLayout columns="auto,*,auto" rows="100%" tap="{{ onOpenProductDetails }}" productData="{{ $value }}" class="product-item" loaded="onOrderItemLoaded">
+                                                    
+                <StackLayout row="0" col="0" colspan="2" class="container-image">
+                    <Image id="productImage" src="{{ $value.mainImage }}"/>                    
+                </StackLayout>
+
+                <StackLayout row="0" col="1" class="product-item-info">   
+                  <Label text="{{ $value.name }}" textWrap="true" class="title" />                                                    
+                  <Label text="{{ $value.quantity + ' '+ internationalization.store.units }}" textWrap="true" class="quantity" />                                                 
+                  <Label class="price" >
+                      <Span text="{{ internationalization._settings.currency.symbol }}"/>
+                      <Span text="{{ $value.price }}"/>
+                  </Label>
+                </StackLayout>
+
+            </GridLayout>
+              
+          </Repeater.itemTemplate>
+        </Repeater>
+
+    </StackLayout>
+  </ScrollView>
+
+</Page>

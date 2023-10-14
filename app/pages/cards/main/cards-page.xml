@@ -1,0 +1,119 @@
+
+<Page class="page cards-page" loaded="onLoaded" navigatingTo="onNavigatingTo" showModaly="onShowModaly">
+
+  <Page.actionBar>
+    <ActionBar android:class="android">
+
+      <Label class="action-bar-title" text="{{ internationalization.cards.CardsPageTitle }}"></Label>      
+
+      <ios>
+        <ActionItem ios.position="left" icon="~/assets/images/menu.png" tap="onToggleMenu" />
+      </ios>
+
+      <android>
+        <NavigationButton icon="res://menu" tap="onToggleMenu" />
+      </android>
+
+      <ActionItem ios.position="right">
+        <StackLayout opacity="{{ isLogged ? 1 : 0 }}" id="action-bar-qrcode-button" storage="acumulated" tap="onReadQRCode">
+          <Image src="~/assets/images/qrcode.png" ios:class="ios"/>
+        </StackLayout>
+      </ActionItem>
+
+      <ActionItem ios.position="right">
+        <StackLayout opacity="{{ isLogged ? 1 : 0 }}" orientation="horizontal" class="acumulated-points">
+          <Image src="~/assets/images/coin.png" class="acumulated-points-coin"/>
+          <Label text="{{ acumulatedPoints }}" id="acumulated-points-label" ></Label>
+        </StackLayout>
+      </ActionItem>
+    </ActionBar>
+  </Page.actionBar>    
+
+  <AbsoluteLayout width="100%" height="100%">  
+    <StackLayout backgroundColor="white" verticalAlignment="center" left="0" top="0" width="100%" height="100%" visibility="{{ isLoading ? 'visible' : 'collapsed' }}" >
+      <ActivityIndicator busy="true" class="loader" height="50pt" width="50pt" />
+    </StackLayout>  
+
+    <cm:CustomMenu xmlns:cm="pages/shared/components/menu/custom-menu" id="custom-menu" iosOverflowSafeArea="false" visibility="{{ !isLoading ? 'visible' : 'collapsed' }}">    
+    
+      <ScrollView mainContent="true" id="main-content"  iosOverflowSafeArea="false">           
+
+      
+        <StackLayout class="container-main" id="cards-container" verticalAlignment="{{ dataLength > 0 ? 'top' : 'center'}}">
+
+          <StackLayout visibility="{{ isLogged && !haveDataToDisplay ? 'visible' : 'collapsed' }}" style="margin: 15 30;">
+            <Image src="~/assets/images/placeholders/cards.png" style="width: 50%; margin-bottom: 30;" />
+            <Label text="{{ internationalization.cards.placeholders.cards.title }}" textWrap="true" style="font-size: 17.5; font-weight: 700; color: #777; text-align: center;" />
+            <Label text="{{ internationalization.cards.placeholders.cards.subtitle }}" textWrap="true" style="font-size: 14; color: #999; text-align: center; padding: 0 5;" />
+            <Button text="{{ internationalization.cards.placeholders.cards.button }}" style="margin-top: 40; background-color: #FF7373; color: #fff; padding: 5; border-radius: 5;" tap="onOpenPromotions" />
+          </StackLayout>
+
+           <StackLayout visibility="{{ !isLogged ? 'visible' : 'collapsed' }}" style="margin: 15 30;">
+            <Image src="~/assets/images/placeholders/login.png" style="width: 50%; margin-bottom: 30;" />
+            <Label text="{{ internationalization.cards.placeholders.login.title }}" textWrap="true" style="font-size: 17.5; font-weight: 700; color: #777; text-align: center;" />
+            <Label text="{{ internationalization.cards.placeholders.login.subtitle }}" textWrap="true" style="font-size: 14; color: #999; text-align: center; padding: 0 5;" />            
+            <Button text="{{ internationalization.cards.placeholders.login.button }}" style="margin-top: 40; background-color: #FF7373; color: #fff; padding: 5; border-radius: 5;" tap="onOpenLogin" />
+          </StackLayout>
+    
+          <Repeater visibility="{{ haveDataToDisplay ? 'visible' : 'collapsed' }}" items="{{ cardsData }}" id="cards-repeater" width="100%" height="100%" test="10">
+            <Repeater.itemTemplate>   
+                
+              <StackLayout class="container-card" tap="onOpenCard" cardId="{{ $value.id }}" style="padding: 20pt;" loaded="onCardLoaded">
+                <GridLayout rows="auto,auto,auto" columns="*">
+
+                  <StackLayout row="0" col="0">
+                    <GridLayout columns="*,auto" rows="*">
+
+                      <StackLayout class="container-expires">
+                        <Label col="0" row="0" text="{{ $value.internationalization.cards.expireLabel + $value.expireDate }}" />
+                      </StackLayout>
+
+                      <StackLayout col="1" row="0" orientation="horizontal" class="container-action-buttons">
+                        <Button text="&#xf2ca;" tap="onReadQRCode" storage="card" cardId="{{ $value.id }}" />
+                        <Button text="&#xf24b;" tap="onOpenPromotion" promotionId="{{ $value.promotionId }}" class="last" />
+                      </StackLayout>
+
+                    </GridLayout>
+                  </StackLayout>
+
+                  <StackLayout row="1" col="0">
+                    <GridLayout columns="*,auto,*" rows="*,*">  
+
+                      <AbsoluteLayout col="1" row="0" class="container-image">
+                        <Image src="{{ $value.thumbnail }}"/>
+                        <StackLayout class="container-points">
+                          <Label>
+                            <FormattedString>
+                              <Span text="{{ $value.myPoints }}" />  
+                              <Span text=" / " />
+                              <Span text="{{ $value.totalPoints }}" />
+                            </FormattedString>
+                          </Label>
+                          
+                        </StackLayout>
+                      </AbsoluteLayout>           
+
+                    </GridLayout>
+                  </StackLayout>
+                  
+                  <StackLayout row="2" col="0" class="container-title">
+                    <Label text="{{ $value.title }}" textWrap="true" />
+                  </StackLayout>  
+
+                </GridLayout>
+              </StackLayout>
+
+            </Repeater.itemTemplate>
+          </Repeater>    
+
+          
+
+        </StackLayout>
+      </ScrollView>
+
+    </cm:CustomMenu>
+  </AbsoluteLayout>
+
+  
+
+</Page>

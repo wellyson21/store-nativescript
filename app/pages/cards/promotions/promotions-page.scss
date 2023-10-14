@@ -1,0 +1,44 @@
+
+@import "../../shared/styles/theme.scss";
+
+.promotions-page{
+
+  .container-main {
+    background-color: $secondary-color;     
+    width: 100%;
+    height: 100%;   
+   
+    .promotion-item{
+      background-color: #fff;
+      margin: 15pt 10pt 10pt 10pt;
+      border-radius: 5pt;
+      border-width: 0;
+      border-color: #ddd;
+      border-bottom-width: 3pt;
+      border-bottom-style: groove;     
+
+      .image{
+        border-radius: 5pt 5pt 0 0;
+        width: 100%;
+        height: 200pt;
+        stretch: fill;
+      }
+
+      .title{
+        margin-top: 5pt;        
+        padding: 4pt 10pt 0 10pt;
+        color: rgb(67, 67, 67);
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16.5pt;        
+        font-weight: 400;
+      }
+
+      .expire{
+        padding: 1pt 10pt 5pt 10pt;
+        color: rgb(114, 114, 114);
+        font-style: italic;
+        font-size: 13pt;
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "161606954577",
+    "firebase_url": "https://ipartts-ed4fb.firebaseio.com",
+    "project_id": "ipartts-ed4fb",
+    "storage_bucket": "ipartts-ed4fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:161606954577:android:5c5a090357d3f6aa",
+        "android_client_info": {
+          "package_name": "com.ipartts.iParttsApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "161606954577-tue3nhdtg3lcgj2v9dkrsdki319qu0j4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpM9s0vd1iVy4udC76es02Da5YXATRhl4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "161606954577-tue3nhdtg3lcgj2v9dkrsdki319qu0j4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "161606954577-m3i6f3dgtubsn9pjlqjknbmid6auoiuq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ipartts.iParttsApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
