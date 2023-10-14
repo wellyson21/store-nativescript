@@ -14,4 +14,4 @@
 ### Configurações
   - Algumas definições do app
 ### Tecnologias Usadas
-  - NATIVESCRIPT, HTMl, CSS, JAVASCRIPT, TYPESCRIPT
+  - NATIVESCRIPT, HTMl, CSS, JAVASCRIPT, TYPESCRIPT, FIREBASE
