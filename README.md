@@ -8,10 +8,10 @@
 ### Produtos
     - Listagem de produtos, com tela de detalhe
 ### Notificações
-### Informaoes da conta do Usuário / Visualização e Edição dos dados
-### Informações Do estabelecimento da loja
+### Informaoes da conta do Usuário
+  - Visualização e Edição dos dados
+### Informações Do Estabelecimento
 ### Configurações
-
-
+  - Algumas definições do app
 ### Tecnologias Usadas
   - NATIVESCRIPT, HTMl, CSS, JAVASCRIPT, TYPESCRIPT
