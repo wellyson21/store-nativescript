@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>161606954577-m3i6f3dgtubsn9pjlqjknbmid6auoiuq.apps.googleusercontent.com</string>
+	<string></string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.161606954577-m3i6f3dgtubsn9pjlqjknbmid6auoiuq</string>
+	<string></string>
 	<key>API_KEY</key>
-	<string>AIzaSyBsOOOpbitstYxWY6a3PI5U8z6SuL1zIlk</string>
+	<string></string>
 	<key>GCM_SENDER_ID</key>
-	<string>161606954577</string>
+	<string></string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.ipartts.iParttsApp</string>
+	<string>com.dev.StoreApp</string>
 	<key>PROJECT_ID</key>
-	<string>ipartts-ed4fb</string>
+	<string></string>
 	<key>STORAGE_BUCKET</key>
-	<string>ipartts-ed4fb.appspot.com</string>
+	<string></string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:161606954577:ios:5c5a090357d3f6aa</string>
+	<string></string>
 	<key>DATABASE_URL</key>
-	<string>https://ipartts-ed4fb.firebaseio.com</string>
+	<string></string>
 </dict>
 </plist>

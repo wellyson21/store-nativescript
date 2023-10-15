@@ -51,8 +51,8 @@
         <string>remote-notification</string>
     </array>
 
-	<key>FacebookAppID</key> <string>417647478987617</string> 
-	<key>FacebookDisplayName</key><string>SmartDev</string>
+	<key>FacebookAppID</key> <string></string> 
+	<key>FacebookDisplayName</key><string></string>
 
 	<key>CFBundleURLTypes</key>
 	<array>
@@ -63,7 +63,7 @@
 					
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb417647478987617</string>
+				<string></string>
 			</array>
 		</dict>
 	</array>
